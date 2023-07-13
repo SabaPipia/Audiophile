@@ -12,7 +12,7 @@ import {
   ButtonContainer,
   ProductLink,
 } from "./style";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function ProductPage() {
   const params = useLocation();
