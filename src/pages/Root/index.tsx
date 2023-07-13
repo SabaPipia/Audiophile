@@ -1,5 +1,5 @@
 import Header from "../../components/header";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, ScrollRestoration, useLocation } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import Footer from "../../components/footer";
 import ProductsInfo from "../../components/info";
@@ -14,6 +14,7 @@ function Root() {
       <Outlet />
       {location.pathname !== "/home" ? <CardComponent /> : null}
       <ProductsInfo />
+      <ScrollRestoration />
       <Footer />
     </div>
   );
