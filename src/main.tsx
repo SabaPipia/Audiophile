@@ -9,10 +9,9 @@ import {
 } from "react-router-dom";
 
 import Root from "./pages/Root/index.tsx";
-import Headphones from "./pages/headphones/index.tsx";
+import ProductPage from "./pages/product/index.tsx";
 import Home from "./pages/home/index.tsx";
-import Speakers from "./pages/speakers/index.tsx";
-import EarPhones from "./pages/earphones/index.tsx";
+import ProductDetails from "./pages/productDetails/index.tsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 
@@ -22,9 +21,12 @@ const router = createBrowserRouter(
       <Route path="/" element={<Navigate to="/home" />} />
       <Route path="/" element={<Root />}>
         <Route path="/home" element={<Home />} />
-        <Route path="/headphones" element={<Headphones />} />
-        <Route path="/speakers" element={<Speakers />} />
-        <Route path="/earphones" element={<EarPhones />} />
+        <Route path="/headphones" element={<ProductPage />} />
+        <Route path="/headphones/:name" element={<ProductDetails />} />
+        <Route path="/speakers" element={<ProductPage />} />
+        <Route path="/speakers/:name" element={<ProductDetails />} />
+        <Route path="/earphones" element={<ProductPage />} />
+        <Route path="/earphones/:name" element={<ProductDetails />} />
       </Route>
     </>
   )
