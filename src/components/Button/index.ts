@@ -8,10 +8,10 @@ export const Button = styled.button`
 `;
 export const PrimaryButton = styled(Button)`
   background-color: #d87d4a;
+  color: #fff;
   &:hover,
   &:active {
     background-color: #e5b69b;
-    color: #fff;
   }
 `;
 
