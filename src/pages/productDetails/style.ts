@@ -6,7 +6,7 @@ export const Content = styled.p`
 `;
 // ------
 export const Container = styled.div`
-  margin: 100px 200px 10px 200px;
+  margin: 50px 200px 10px 200px;
 `;
 export const BackButton = styled.button`
   border: none;
@@ -14,6 +14,7 @@ export const BackButton = styled.button`
   text-decoration: underline;
   font-size: 17px;
   color: #202020;
+  margin-bottom: 30px;
 `;
 export const ProductContainer = styled.div`
   display: grid;

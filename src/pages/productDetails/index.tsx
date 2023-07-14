@@ -33,7 +33,7 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState<number>(1);
   const loc = useLocation();
 
-  const { addToCart } = useContext(CartContext);
+  const { cartItems, addToCart, setCartItems } = useContext(CartContext);
 
   const getProductName = () => {
     const locPath = loc.pathname.split("/");
@@ -76,7 +76,19 @@ const ProductDetails = () => {
       id: new Date().toISOString(),
       picture: productData?.image.desktop,
     };
-    addToCart(productInfo);
+    const existingItem = cartItems.find((item) => item.name === itemName);
+    if (existingItem) {
+      const updatedCartItems = cartItems.map((item) => {
+        if (item.name === itemName && item.quantity) {
+          return { ...item, quantity: item.quantity + quantity };
+        }
+        return item;
+      });
+      setCartItems(updatedCartItems);
+    } else {
+      addToCart(productInfo);
+    }
+    setQuantity(1);
   };
   console.log();
   return (
