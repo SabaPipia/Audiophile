@@ -77,46 +77,6 @@ export const QuantityInput = styled.input`
 `;
 // Features
 
-export const FeaturesContainer = styled(ProductContainer)`
-  grid-template-columns: 70fr 30fr;
-`;
-
-export const FeaturesContent = styled.div`
-  margin-top: 120px;
-`;
-export const FeaturesHeader = styled.h1`
-  text-transform: uppercase;
-  margin-bottom: 30px;
-`;
-export const Includes = styled.div``;
-export const BoxLine = styled.div`
-  display: flex;
-  gap: 20px;
-`;
-export const BoxQuantity = styled.h3`
-  color: #d87d4a;
-  font-weight: 100;
-`;
-export const ProductItems = styled.h3`
-  color: #838383;
-  font-weight: 100;
-`;
-//Galery
-export const Gallery = styled.div`
-  margin-top: 70px;
-  display: flex;
-  scale: 1;
-  gap: 30px;
-  justify-content: center;
-`;
-export const GalleryLeft = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-`;
-export const GalleryRight = styled.div``;
-
-export const GalleryIMG = styled.img``;
 // also like
 export const CardContainer = styled.div`
   display: flex;

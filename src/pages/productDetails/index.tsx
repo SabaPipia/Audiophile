@@ -16,30 +16,24 @@ import {
   QuantityContainer,
   QuantityButtons,
   QuantityInput,
-  FeaturesContainer,
-  FeaturesContent,
-  FeaturesHeader,
-  Includes,
-  BoxQuantity,
-  BoxLine,
-  ProductItems,
-  Gallery,
-  GalleryIMG,
-  GalleryLeft,
-  GalleryRight,
   Card,
   CardImg,
   CardHeader,
   CardContainer,
   Header,
 } from "./style";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { PrimaryButton } from "../../components/Button";
+import { CartContext } from "../Root";
+import GalleryComp from "./components/gallery";
+import Features from "./components/features";
 
 const ProductDetails = () => {
   const [productData, setProductData] = useState<dataTypes>();
   const [quantity, setQuantity] = useState<number>(1);
   const loc = useLocation();
+
+  const { addToCart } = useContext(CartContext);
 
   const getProductName = () => {
     const locPath = loc.pathname.split("/");
@@ -48,7 +42,6 @@ const ProductDetails = () => {
     const itemData = data.filter((item) => name === item.name);
     setProductData(itemData[0]);
   };
-  console.log(productData?.others[0].image.desktop);
   useEffect(() => {
     getProductName();
   }, []);
@@ -56,6 +49,7 @@ const ProductDetails = () => {
   const back = () => {
     navigate(-1);
   };
+
   const incrementByOne = () => {
     const count = quantity + 1;
     if (quantity != 99) {
@@ -64,6 +58,7 @@ const ProductDetails = () => {
       //#Todo Error: Maximum quantity reached.
     }
   };
+
   const decrementByOne = () => {
     const count = quantity - 1;
     if (quantity != 1) {
@@ -72,6 +67,18 @@ const ProductDetails = () => {
       //##Todo Error: Minimum quantity reached.
     }
   };
+  const handleAddToCart = () => {
+    const itemName = productData?.name.split(" ")[0];
+    const productInfo = {
+      name: itemName,
+      price: productData?.price,
+      quantity: quantity,
+      id: new Date().toISOString(),
+      picture: productData?.image.desktop,
+    };
+    addToCart(productInfo);
+  };
+  console.log();
   return (
     <Container>
       <BackButton onClick={back}>Go Back</BackButton>
@@ -90,59 +97,23 @@ const ProductDetails = () => {
               <QuantityInput disabled value={quantity} />
               <QuantityButtons onClick={incrementByOne}>+</QuantityButtons>
             </QuantityContainer>
-            <PrimaryButton>Add to cart</PrimaryButton>
+            <PrimaryButton onClick={handleAddToCart}>Add to cart</PrimaryButton>
           </CartContainer>
         </ProductPriceContainer>
       </ProductContainer>
-      <FeaturesContent>
-        <FeaturesContainer>
-          <FeaturesHeader>features</FeaturesHeader>
-          <FeaturesHeader>in the box</FeaturesHeader>
-        </FeaturesContainer>
-        <FeaturesContainer>
-          <Content>{productData?.features}</Content>
-          <Includes>
-            <BoxLine>
-              <div>
-                {productData?.includes.map((item) => {
-                  return <BoxQuantity>{item.quantity}x </BoxQuantity>;
-                })}
-              </div>
-              <div>
-                {productData?.includes.map((item) => {
-                  return <ProductItems> {item.item}</ProductItems>;
-                })}
-              </div>
-            </BoxLine>
-          </Includes>
-        </FeaturesContainer>
-      </FeaturesContent>
-      <Gallery>
-        <GalleryLeft>
-          <GalleryIMG src={productData?.gallery.first.desktop} />
-          <GalleryIMG src={productData?.gallery.second.desktop} />
-        </GalleryLeft>
-        <GalleryRight>
-          <GalleryIMG src={productData?.gallery.third.desktop} />
-        </GalleryRight>
-      </Gallery>
+      <Features productData={productData} />
+      <GalleryComp productData={productData} />
       <Header>You may also like</Header>
       <CardContainer>
-        <Card>
-          <CardImg src={productData?.others[0].image.desktop} />
-          <CardHeader>{productData?.others[0].name}</CardHeader>
-          <PrimaryButton>See Product</PrimaryButton>
-        </Card>
-        <Card>
-          <CardImg src={productData?.others[1].image.desktop} />
-          <CardHeader>{productData?.others[1].name}</CardHeader>
-          <PrimaryButton>See Product</PrimaryButton>
-        </Card>
-        <Card>
-          <CardImg src={productData?.others[2].image.desktop} />
-          <CardHeader>{productData?.others[2].name}</CardHeader>
-          <PrimaryButton>See Product</PrimaryButton>
-        </Card>
+        {productData?.others.map((item, index) => {
+          return (
+            <Card key={index}>
+              <CardImg src={productData?.others[index].image.desktop} />
+              <CardHeader>{productData?.others[index].name}</CardHeader>
+              <PrimaryButton>See Product</PrimaryButton>
+            </Card>
+          );
+        })}
       </CardContainer>
     </Container>
   );

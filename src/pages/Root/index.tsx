@@ -4,16 +4,48 @@ import { createGlobalStyle } from "styled-components";
 import Footer from "../../components/footer";
 import ProductsInfo from "../../components/info";
 import CardComponent from "../home/components/Card";
+import { createContext, useState } from "react";
+
+interface Item {
+  name?: string;
+  price?: number;
+  quantity?: number;
+  id?: string;
+  picture?: string;
+}
+interface CartContextType {
+  cartItems: Item[];
+  addToCart: (product: Item) => void;
+  removeAll: () => void;
+}
+
+export const CartContext = createContext<CartContextType>({
+  cartItems: [],
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  addToCart: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  removeAll: () => {},
+});
 
 function Root() {
   const location = useLocation();
+  const [cartItems, setCartItems] = useState<Item[]>([]);
+
+  const addToCart = (product: Item) => {
+    setCartItems([...cartItems, product]);
+  };
+  const removeAll = () => {
+    setCartItems([]);
+  };
   return (
     <div>
       <GlobalStyle />
-      <Header />
-      <Outlet />
-      {location.pathname !== "/home" ? <CardComponent /> : null}
-      <ProductsInfo />
+      <CartContext.Provider value={{ cartItems, addToCart, removeAll }}>
+        <Header />
+        <Outlet />
+        {location.pathname !== "/home" ? <CardComponent /> : null}
+        <ProductsInfo />
+      </CartContext.Provider>
       <ScrollRestoration />
       <Footer />
     </div>

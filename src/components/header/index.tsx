@@ -1,13 +1,29 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import CartIcon from "../../assets/shared/desktop/icon-cart.svg";
 import Logo from "../../assets/shared/desktop/logo.svg";
 import * as styles from "../../components/variables";
+import { useState } from "react";
+import Cart from "../cart";
 
 function Header() {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!modalVisible);
+  };
   return (
     <Div>
-      <Container>
+      <GlobalStyle modalV={modalVisible} />
+      <Container
+        onClick={() => {
+          if (!modalVisible) {
+            return;
+          } else {
+            toggleModal();
+          }
+        }}
+      >
         <Navbar>
           <Wrapper>
             <NavLink to={"/home"}>
@@ -31,13 +47,39 @@ function Header() {
             </ItemContainer>
           </LinkWrapper>
           <Wrapper>
-            <img src={CartIcon} />
+            <CardImg src={CartIcon} onClick={toggleModal} />
           </Wrapper>
         </Navbar>
       </Container>
+      {modalVisible ? (
+        <ModalOverlay>
+          <Cart />
+        </ModalOverlay>
+      ) : null}
     </Div>
   );
 }
+const GlobalStyle = createGlobalStyle<{ modalV: boolean }>`
+  body {
+    overflow:${(props) => {
+      if (props.modalV) return "hidden";
+      else return "none";
+    }};
+  }
+`;
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 88px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+`;
+
 const Container = styled.div`
   padding: ${styles.container};
 `;
@@ -62,12 +104,17 @@ const Navbar = styled.nav`
   justify-content: space-between;
   align-items: center;
   font-size: 13px;
+  position: relative;
 `;
 const Wrapper = styled.div``;
 const LinkWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+const CardImg = styled.img`
+  cursor: pointer;
+`;
+
 // exports
 export const Item = styled.li`
   list-style: none;
