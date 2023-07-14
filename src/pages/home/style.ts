@@ -93,3 +93,16 @@ export const CardLink = styled(Link)`
     text-decoration: none;
   }
 `;
+export const LinkButton = styled(Link)`
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+  }
+  &:hover,
+  &:active {
+    color: #d87d4a;
+  }
+`;

@@ -19,6 +19,7 @@ import {
   ProductImgT,
   LastProduct,
 } from "./style";
+import { LinkButton } from "../../style";
 
 function ProductCard() {
   return (
@@ -31,13 +32,17 @@ function ProductCard() {
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound
           </ProductInfo>
-          <SecondaryBtnFill>See Product</SecondaryBtnFill>
+          <LinkButton to={"/speakers/ZX9%20Speaker"}>
+            <SecondaryBtnFill>See Product</SecondaryBtnFill>
+          </LinkButton>
         </ProductWrapper>
       </Product>
       <ProductSecond>
         <ProductWrapperSec>
           <ProductName>Zx7 speaker</ProductName>
-          <SecondaryButton>See Product</SecondaryButton>
+          <LinkButton to={"/speakers/ZX7%20Speaker"}>
+            <SecondaryButton>See Product</SecondaryButton>
+          </LinkButton>
         </ProductWrapperSec>
       </ProductSecond>
       <Product bgColor={false}>
@@ -48,7 +53,9 @@ function ProductCard() {
           <ProductWrapper>
             <div>
               <ProductName color={"#000"}>yx1 Earphones</ProductName>
-              <SecondaryButton>See Product</SecondaryButton>
+              <LinkButton to={"/earphones/YX1%20Wireless%20Earphones"}>
+                <SecondaryButton>See Product</SecondaryButton>
+              </LinkButton>
             </div>
           </ProductWrapper>
         </LastProduct>

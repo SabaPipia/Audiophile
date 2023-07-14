@@ -5,6 +5,7 @@ import {
   Product,
   ProductInfo,
   ProductName,
+  LinkButton,
 } from "../../style";
 import { PrimaryButton } from "../../../../components/Button";
 
@@ -19,7 +20,9 @@ function HeroComponent() {
           for the passionate music enthusiast
         </ProductInfo>
         <BtnWrapper>
-          <PrimaryButton>See Product</PrimaryButton>
+          <LinkButton to={"/headphones/XX99%20Mark%20II%20Headphones"}>
+            <PrimaryButton>See Product</PrimaryButton>
+          </LinkButton>
         </BtnWrapper>
       </HeroContent>
     </Hero>
