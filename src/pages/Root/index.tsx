@@ -17,6 +17,7 @@ interface CartContextType {
   cartItems: Item[];
   addToCart: (product: Item) => void;
   removeAll: () => void;
+  setCartItems: (items: Item[]) => void;
 }
 
 export const CartContext = createContext<CartContextType>({
@@ -25,6 +26,8 @@ export const CartContext = createContext<CartContextType>({
   addToCart: () => {},
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   removeAll: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setCartItems: () => {},
 });
 
 function Root() {
@@ -40,7 +43,9 @@ function Root() {
   return (
     <div>
       <GlobalStyle />
-      <CartContext.Provider value={{ cartItems, addToCart, removeAll }}>
+      <CartContext.Provider
+        value={{ cartItems, addToCart, removeAll, setCartItems }}
+      >
         <Header />
         <Outlet />
         {location.pathname !== "/home" ? <CardComponent /> : null}

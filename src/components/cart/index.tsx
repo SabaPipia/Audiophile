@@ -110,7 +110,6 @@ const Card = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  margin-top: 30px;
 `;
 const CardLeft = styled.div`
   display: flex;
