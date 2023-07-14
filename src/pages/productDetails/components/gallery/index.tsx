@@ -14,17 +14,17 @@ const GalleryComp: React.FC<GalleryProps> = ({ productData }) => {
           <GalleryIMG src={productData?.gallery.first.desktop} />
           <GalleryIMG src={productData?.gallery.second.desktop} />
         </GalleryLeft>
-        <GalleryRight>
-          <GalleryIMG src={productData?.gallery.third.desktop} />
-        </GalleryRight>
+        <GalleryRight
+          imgsrc={productData?.gallery.third.desktop ?? ""}
+        ></GalleryRight>
       </Gallery>
     </>
   );
 };
+
 const Gallery = styled.div`
   margin-top: 70px;
   display: flex;
-  scale: 1;
   gap: 30px;
   justify-content: center;
 `;
@@ -33,7 +33,18 @@ export const GalleryLeft = styled.div`
   flex-direction: column;
   gap: 30px;
 `;
-export const GalleryRight = styled.div``;
+export const GalleryRight = styled.div<{ imgsrc: string }>`
+  background-image: ${(props) => {
+    return `url(${props.imgsrc})`;
+  }};
+  width: 100%;
+  background-size: cover;
+  object-fit: cover;
+  background-repeat: no-repeat;
+`;
 
-export const GalleryIMG = styled.img``;
+export const GalleryIMG = styled.img`
+  &:last-child {
+  }
+`;
 export default GalleryComp;
