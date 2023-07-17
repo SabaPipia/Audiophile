@@ -1,5 +1,3 @@
-import React from "react";
-import { styled } from "styled-components";
 import Input from "../input";
 import { Header, InputWrapper, Wrapper } from "..";
 

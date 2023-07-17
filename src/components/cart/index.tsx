@@ -6,7 +6,6 @@ import {
 } from "../../pages/productDetails/style";
 import { CartContext } from "../../pages/Root";
 import { useState, useContext } from "react";
-import { PrimaryButton } from "../Button";
 import RemoveConfirmation from "./removeConfirmation";
 import { Link } from "react-router-dom";
 
@@ -147,6 +146,21 @@ const Cart: React.FC<CartProps> = ({ toggleModal }) => {
 };
 
 const CheckoutLink = styled(Link)``;
+export const Button = styled.button`
+  cursor: pointer;
+  padding: 15px 50px;
+  text-transform: uppercase;
+  border: none;
+  width: 100%;
+`;
+export const PrimaryButton = styled(Button)`
+  background-color: #d87d4a;
+  color: #fff;
+  &:hover,
+  &:active {
+    background-color: #e5b69b;
+  }
+`;
 
 export const ModalCard = styled.div`
   display: flex;

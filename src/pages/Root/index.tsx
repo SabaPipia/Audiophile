@@ -3,7 +3,6 @@ import {
   Outlet,
   ScrollRestoration,
   useLocation,
-  useParams,
 } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import Footer from "../../components/footer";

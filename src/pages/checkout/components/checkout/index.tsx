@@ -1,4 +1,3 @@
-import React from "react";
 import Billing from "./billing";
 import styled from "styled-components";
 import Shipping from "./shipping";
