@@ -41,7 +41,7 @@ function Root() {
     setCartItems([]);
   };
   return (
-    <div>
+    <>
       <GlobalStyle />
       <CartContext.Provider
         value={{ cartItems, addToCart, removeAll, setCartItems }}
@@ -53,7 +53,7 @@ function Root() {
       </CartContext.Provider>
       <ScrollRestoration />
       <Footer />
-    </div>
+    </>
   );
 }
 const GlobalStyle = createGlobalStyle`
