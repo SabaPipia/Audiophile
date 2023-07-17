@@ -73,6 +73,7 @@ const Links = styled.div`
   }
 `;
 const Icons = styled.div`
+  align-items: center;
   display: flex;
   text-align: end;
   gap: 20px;

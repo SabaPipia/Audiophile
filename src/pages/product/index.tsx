@@ -27,13 +27,13 @@ function ProductPage() {
       <ProductWrapper>
         {filterData.map((item, index) => (
           <ProductCard key={index} flexdir={index}>
-            <ProductImage src={item.image.desktop} alt="headphones" />
+            <ProductImage src={item.image.desktop} alt={item.name} />
             <ProductContent>
               <ContentNew>{item.new ? "New Product" : null}</ContentNew>
               <ProductName>{item.name}</ProductName>
               <p>{item.description}</p>
               <ButtonContainer>
-                <ProductLink to={`${item.name}`}>
+                <ProductLink to={`${item.slug}`}>
                   <PrimaryButton>see product</PrimaryButton>
                 </ProductLink>
               </ButtonContainer>

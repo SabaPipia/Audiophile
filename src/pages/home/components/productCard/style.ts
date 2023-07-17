@@ -19,19 +19,26 @@ export const Product = styled.div<{ bgColor: boolean }>`
   overflow: hidden;
   border-radius: 30px;
   align-items: center;
+  &:last-child {
+    gap: 30px;
+    align-items: start;
+  }
 `;
 export const LastProduct = styled.div`
+  display: flex;
   background-color: #cecece;
-  padding: 70px;
   border-radius: 30px;
+  height: 80%;
+  padding-left: 80px;
 `;
 export const ImgWrapper = styled.div`
   width: 100%;
   border-radius: 30px;
+  height: 80%;
   img {
     border-radius: 30px;
-    height: 300px;
-    width: 550px;
+    /* height: 100%; */
+    /* width: 550px; */
   }
 `;
 

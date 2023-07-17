@@ -23,13 +23,14 @@ function ProductsInfo() {
 }
 const Head = styled.h1`
   text-transform: uppercase;
-  font-size: 46px;
+  font-size: 50px;
 `;
 const Span = styled.span`
   color: #d87d4a;
 `;
 const Paragraph = styled.p`
   color: #777;
+  font-size: 18px;
 `;
 const Container = styled.div`
   display: grid;
@@ -38,7 +39,7 @@ const Container = styled.div`
   margin: 30px 200px;
 `;
 const Content = styled.div`
-  width: 500px;
+  width: 700px;
   display: flex;
   flex-direction: column;
   justify-content: center;

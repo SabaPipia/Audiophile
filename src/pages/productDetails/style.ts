@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 // ---------
 export const Content = styled.p`
@@ -98,4 +99,18 @@ export const Header = styled.h1`
   text-align: center;
   margin-top: 120px;
   margin-bottom: 50px;
+  text-transform: uppercase;
+`;
+export const LinkLike = styled(Link)`
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+  }
+  &:hover,
+  &:active {
+    color: #d87d4a;
+  }
 `;
