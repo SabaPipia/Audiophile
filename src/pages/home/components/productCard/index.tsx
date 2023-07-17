@@ -24,7 +24,7 @@ import { LinkButton } from "../../style";
 function ProductCard() {
   return (
     <Container>
-      <Product bgColor={true}>
+      <Product bgcolor={true}>
         <ProductImg src={Zx9Speaker} />
         <ProductWrapper>
           <ProductName>Zx9 speaker</ProductName>
@@ -45,7 +45,7 @@ function ProductCard() {
           </LinkButton>
         </ProductWrapperSec>
       </ProductSecond>
-      <Product bgColor={false}>
+      <Product bgcolor={false}>
         <ImgWrapper>
           <ProductImgT src={Earphones} />
         </ImgWrapper>

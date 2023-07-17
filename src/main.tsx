@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import {
   Navigate,
@@ -12,6 +12,7 @@ import Root from "./pages/Root/index.tsx";
 import ProductPage from "./pages/product/index.tsx";
 import Home from "./pages/home/index.tsx";
 import ProductDetails from "./pages/productDetails/index.tsx";
+import Main from "./pages/checkout/index.tsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
         <Route path="/speakers/:name" element={<ProductDetails />} />
         <Route path="/earphones" element={<ProductPage />} />
         <Route path="/earphones/:name" element={<ProductDetails />} />
+        <Route path="/checkout/:url" element={<Main />} />
       </Route>
     </>
   )

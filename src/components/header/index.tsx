@@ -53,7 +53,7 @@ function Header() {
       </Container>
       {modalVisible ? (
         <ModalOverlay>
-          <Cart />
+          <Cart toggleModal={toggleModal} />
         </ModalOverlay>
       ) : null}
     </Div>
