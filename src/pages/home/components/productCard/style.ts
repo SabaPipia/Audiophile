@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 export const Container = styled.div`
   margin: 20px 200px;
 `;
-export const Product = styled.div<{ bgColor: boolean }>`
+export const Product = styled.div<{ bgcolor: boolean }>`
   background-color: ${(props) => {
-    if (props.bgColor) {
+    if (props.bgcolor) {
       return "#d87d4a";
     } else {
       ("none");

@@ -8,16 +8,21 @@ import { CartContext } from "../../pages/Root";
 import { useState, useContext } from "react";
 import { PrimaryButton } from "../Button";
 import RemoveConfirmation from "./removeConfirmation";
+import { Link } from "react-router-dom";
 
-function Cart() {
+interface CartProps {
+  toggleModal: () => void;
+}
+const Cart: React.FC<CartProps> = ({ toggleModal }) => {
   const { cartItems, removeAll, setCartItems } = useContext(CartContext);
+
   const [rerender, setRerender] = useState(false);
   const [appearRemoveItem, setAppearRemoveItem] = useState(false);
-  const [removeItem, setRemoveItem] = useState(false);
   const [selectedItem, SetSelectedItem] = useState<{
     id: string | undefined;
     name: string;
   }>({ id: "", name: "" });
+
   const calcTotalPrice = () => {
     let price = 0;
     cartItems.map((item) => {
@@ -44,15 +49,6 @@ function Cart() {
       } else if (item.name === itemName && item.quantity === 1) {
         setAppearRemoveItem(true);
         SetSelectedItem({ id: item.id, name: item.name });
-
-        //
-        // if (removeItem) {
-        //   const updatedCartItems = cartItems.filter(
-        //     (prod) => prod.id !== item.id
-        //   );
-        //   setCartItems(updatedCartItems);
-        //   console.log("s");
-        // }
       }
     });
   };
@@ -65,6 +61,17 @@ function Cart() {
   };
   const handleCancel = () => {
     setAppearRemoveItem(false);
+  };
+  const generateCheckoutUrl = () => {
+    let chars = "";
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    chars += letters;
+    let randomUrl = "";
+    for (let i = 0; i < 50; i++) {
+      const letter = Math.floor(Math.random() * chars.length);
+      randomUrl += chars.charAt(letter);
+    }
+    return randomUrl;
   };
   return (
     <>
@@ -126,13 +133,20 @@ function Cart() {
               <TotalH>total</TotalH>
               <TotalPrice>$ {calcTotalPrice()}</TotalPrice>
             </TotalPriceWrapper>
-            <PrimaryButton>Checkout</PrimaryButton>
+            <CheckoutLink
+              to={`/checkout/${generateCheckoutUrl()}`}
+              onClick={toggleModal}
+            >
+              <PrimaryButton>Checkout</PrimaryButton>
+            </CheckoutLink>
           </>
         )}
       </ModalCard>
     </>
   );
-}
+};
+
+const CheckoutLink = styled(Link)``;
 
 export const ModalCard = styled.div`
   display: flex;

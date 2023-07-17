@@ -1,10 +1,15 @@
 import Header from "../../components/header";
-import { Outlet, ScrollRestoration, useLocation } from "react-router-dom";
+import {
+  Outlet,
+  ScrollRestoration,
+  useLocation,
+  useParams,
+} from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import Footer from "../../components/footer";
 import ProductsInfo from "../../components/info";
 import CardComponent from "../home/components/Card";
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 interface Item {
   name?: string;
@@ -33,6 +38,7 @@ export const CartContext = createContext<CartContextType>({
 function Root() {
   const location = useLocation();
   const [cartItems, setCartItems] = useState<Item[]>([]);
+  const [checkout, setCheckout] = useState(false);
 
   const addToCart = (product: Item) => {
     setCartItems([...cartItems, product]);
@@ -40,19 +46,34 @@ function Root() {
   const removeAll = () => {
     setCartItems([]);
   };
+
+  const CheckPathName = (loc: string) => {
+    {
+      loc.startsWith("/checkout") ? setCheckout(true) : setCheckout(false);
+    }
+  };
+  useEffect(() => {
+    CheckPathName(location.pathname);
+  }, [location]);
   return (
     <>
-      <GlobalStyle />
-      <CartContext.Provider
-        value={{ cartItems, addToCart, removeAll, setCartItems }}
-      >
-        <Header />
-        <Outlet />
-        {location.pathname !== "/home" ? <CardComponent /> : null}
-        <ProductsInfo />
-      </CartContext.Provider>
-      <ScrollRestoration />
-      <Footer />
+      <>
+        <GlobalStyle />
+        <CartContext.Provider
+          value={{ cartItems, addToCart, removeAll, setCartItems }}
+        >
+          <Header />
+          <Outlet />
+          {checkout ? null : (
+            <>
+              {location.pathname !== "/home" ? <CardComponent /> : null}
+              <ProductsInfo />
+            </>
+          )}
+        </CartContext.Provider>
+        <ScrollRestoration />
+        <Footer />
+      </>
     </>
   );
 }
