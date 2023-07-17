@@ -16,35 +16,33 @@ import {
   QuantityContainer,
   QuantityButtons,
   QuantityInput,
-  Card,
-  CardImg,
-  CardHeader,
-  CardContainer,
-  Header,
 } from "./style";
 import { useEffect, useState, useContext } from "react";
 import { PrimaryButton } from "../../components/Button";
 import { CartContext } from "../Root";
 import GalleryComp from "./components/gallery";
 import Features from "./components/features";
+import Suggestions from "./components/suggestions";
 
 const ProductDetails = () => {
   const [productData, setProductData] = useState<dataTypes>();
   const [quantity, setQuantity] = useState<number>(1);
   const loc = useLocation();
+  const [reload, setReload] = useState<boolean>(false);
 
   const { cartItems, addToCart, setCartItems } = useContext(CartContext);
 
   const getProductName = () => {
     const locPath = loc.pathname.split("/");
-    const getName = locPath[locPath.length - 1].split("%20");
-    const name = getName.join(" ");
-    const itemData = data.filter((item) => name === item.name);
+    const getName = locPath[locPath.length - 1].split("%20").join(" ");
+    const itemData = data.filter((item) => getName === item.slug);
     setProductData(itemData[0]);
+    setReload(false);
   };
   useEffect(() => {
     getProductName();
-  }, []);
+  }, [reload]);
+
   const navigate = useNavigate();
   const back = () => {
     navigate(-1);
@@ -90,7 +88,6 @@ const ProductDetails = () => {
     }
     setQuantity(1);
   };
-  console.log();
   return (
     <Container>
       <BackButton onClick={back}>Go Back</BackButton>
@@ -115,18 +112,7 @@ const ProductDetails = () => {
       </ProductContainer>
       <Features productData={productData} />
       <GalleryComp productData={productData} />
-      <Header>You may also like</Header>
-      <CardContainer>
-        {productData?.others.map((item, index) => {
-          return (
-            <Card key={index}>
-              <CardImg src={productData?.others[index].image.desktop} />
-              <CardHeader>{productData?.others[index].name}</CardHeader>
-              <PrimaryButton>See Product</PrimaryButton>
-            </Card>
-          );
-        })}
-      </CardContainer>
+      <Suggestions Data={productData} setReload={setReload} />
     </Container>
   );
 };

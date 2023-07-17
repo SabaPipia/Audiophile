@@ -51,12 +51,10 @@ function ProductCard() {
         </ImgWrapper>
         <LastProduct>
           <ProductWrapper>
-            <div>
-              <ProductName color={"#000"}>yx1 Earphones</ProductName>
-              <LinkButton to={"/earphones/YX1%20Wireless%20Earphones"}>
-                <SecondaryButton>See Product</SecondaryButton>
-              </LinkButton>
-            </div>
+            <ProductName color={"#000"}>yx1 Earphones</ProductName>
+            <LinkButton to={"/earphones/YX1%20Wireless%20Earphones"}>
+              <SecondaryButton>See Product</SecondaryButton>
+            </LinkButton>
           </ProductWrapper>
         </LastProduct>
       </Product>
