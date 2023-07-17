@@ -7,11 +7,17 @@ import {
 import { CartContext } from "../../pages/Root";
 import { useState, useContext } from "react";
 import { PrimaryButton } from "../Button";
+import RemoveConfirmation from "./removeConfirmation";
 
 function Cart() {
-  const { cartItems, removeAll } = useContext(CartContext);
+  const { cartItems, removeAll, setCartItems } = useContext(CartContext);
   const [rerender, setRerender] = useState(false);
-
+  const [appearRemoveItem, setAppearRemoveItem] = useState(false);
+  const [removeItem, setRemoveItem] = useState(false);
+  const [selectedItem, SetSelectedItem] = useState<{
+    id: string | undefined;
+    name: string;
+  }>({ id: "", name: "" });
   const calcTotalPrice = () => {
     let price = 0;
     cartItems.map((item) => {
@@ -26,59 +32,109 @@ function Cart() {
     cartItems.map((item) => {
       if (item.name === itemName && item.quantity) {
         item.quantity = newCount;
+      }
+    });
+    setRerender(!rerender);
+  };
+  const decrementByOne = (quantity: number, itemName: string) => {
+    cartItems.map((item, index) => {
+      if (item.name === itemName && quantity > 1 && item.quantity) {
+        item.quantity--;
         setRerender(!rerender);
+      } else if (item.name === itemName && item.quantity === 1) {
+        setAppearRemoveItem(true);
+        SetSelectedItem({ id: item.id, name: item.name });
+
+        //
+        // if (removeItem) {
+        //   const updatedCartItems = cartItems.filter(
+        //     (prod) => prod.id !== item.id
+        //   );
+        //   setCartItems(updatedCartItems);
+        //   console.log("s");
+        // }
       }
     });
   };
+  const handleRemove = () => {
+    const updatedCartItems = cartItems.filter(
+      (prod) => prod.id !== selectedItem.id
+    );
+    setCartItems(updatedCartItems);
+    setAppearRemoveItem(false);
+  };
+  const handleCancel = () => {
+    setAppearRemoveItem(false);
+  };
   return (
-    <ModalCard>
-      <ModalHeader>
-        <ItemCount>Cart ({cartItems.length})</ItemCount>
-        <RemoveBTN onClick={removeAll}>Remove all</RemoveBTN>
-      </ModalHeader>
-      {cartItems.length === 0 ? (
-        <WraningText>There are no item(s) in the cart</WraningText>
-      ) : (
-        <>
-          {cartItems.map((product) => {
-            return (
-              <Card key={product.id}>
-                <CardLeft>
-                  <CardImg src={`../${product.picture ?? ""}`} />
-                  <CardNameWrapper>
-                    <ItemName>{product.name}</ItemName>
-                    <ItemPrice>$ {product.price}</ItemPrice>
-                  </CardNameWrapper>
-                </CardLeft>
-                <ModalQuantity>
-                  <QuantityButtons>-</QuantityButtons>
-                  <ModalInput disabled value={product.quantity} />
-                  <QuantityButtons
-                    onClick={() => {
-                      {
-                        product.quantity && product.name
-                          ? incrementByOne(product.quantity, product.name)
-                          : null;
-                      }
-                    }}
-                  >
-                    +
-                  </QuantityButtons>
-                </ModalQuantity>
-              </Card>
-            );
-          })}
-          <TotalPriceWrapper>
-            <TotalH>total</TotalH>
-            <TotalPrice>$ {calcTotalPrice()}</TotalPrice>
-          </TotalPriceWrapper>
-          <PrimaryButton>Checkout</PrimaryButton>
-        </>
-      )}
-    </ModalCard>
+    <>
+      <ModalCard>
+        <ModalHeader>
+          <ItemCount>Cart ({cartItems.length})</ItemCount>
+          <RemoveBTN onClick={removeAll}>Remove all</RemoveBTN>
+        </ModalHeader>
+        {cartItems.length === 0 ? (
+          <WraningText>There are no item(s) in the cart</WraningText>
+        ) : (
+          <>
+            {cartItems.map((product) => {
+              return (
+                <Card key={product.id}>
+                  <CardLeft>
+                    <CardImg src={`../${product.picture ?? ""}`} />
+                    <CardNameWrapper>
+                      <ItemName>{product.name}</ItemName>
+                      <ItemPrice>$ {product.price}</ItemPrice>
+                    </CardNameWrapper>
+                  </CardLeft>
+                  <ModalQuantity>
+                    <QuantityButtons
+                      onClick={() => {
+                        {
+                          product.quantity && product.name
+                            ? decrementByOne(product.quantity, product.name)
+                            : null;
+                        }
+                      }}
+                    >
+                      -
+                    </QuantityButtons>
+                    <ModalInput disabled value={product.quantity} />
+                    <QuantityButtons
+                      onClick={() => {
+                        {
+                          product.quantity && product.name
+                            ? incrementByOne(product.quantity, product.name)
+                            : null;
+                        }
+                      }}
+                    >
+                      +
+                    </QuantityButtons>
+                  </ModalQuantity>
+                </Card>
+              );
+            })}
+            {appearRemoveItem ? (
+              <RemoveConfirmation
+                selectedItem={selectedItem}
+                handleRemove={handleRemove}
+                handleCancel={handleCancel}
+              />
+            ) : null}
+            <TotalPriceWrapper>
+              <TotalH>total</TotalH>
+              <TotalPrice>$ {calcTotalPrice()}</TotalPrice>
+            </TotalPriceWrapper>
+            <PrimaryButton>Checkout</PrimaryButton>
+          </>
+        )}
+      </ModalCard>
+    </>
   );
 }
-const ModalCard = styled.div`
+
+export const ModalCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -86,7 +142,6 @@ const ModalCard = styled.div`
   top: 20px;
   right: 220px;
   background-color: white;
-  backdrop-filter: red;
   padding: 30px;
   width: 350px;
 `;
@@ -157,4 +212,5 @@ const WraningText = styled.h3`
   font-size: 18px;
   font-weight: 10;
 `;
+
 export default Cart;
