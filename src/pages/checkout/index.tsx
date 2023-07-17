@@ -18,7 +18,6 @@ function Main() {
             </SummaryWrapper>
           </div>
         </GridContainer>
-        <Total />
       </Container>
     </>
   );
