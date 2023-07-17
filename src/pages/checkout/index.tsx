@@ -1,8 +1,7 @@
-import React from "react";
-
 import styled, { createGlobalStyle } from "styled-components";
 import Summary from "./components/summary";
 import Checkout from "./components/checkout";
+import Total from "./components/summary/sum";
 
 function Main() {
   return (
@@ -13,10 +12,13 @@ function Main() {
           <CheckoutWrapper>
             <Checkout />
           </CheckoutWrapper>
-          <SummaryWrapper>
-            <Summary />
-          </SummaryWrapper>
+          <div>
+            <SummaryWrapper>
+              <Summary />
+            </SummaryWrapper>
+          </div>
         </GridContainer>
+        <Total />
       </Container>
     </>
   );
@@ -25,11 +27,9 @@ const GlobalStyle = createGlobalStyle`
 body{
   background-color:#F1F1F1
 }`;
-const Header = styled.h1`
-  text-transform: uppercase;
-`;
+
 const Wrapper = styled.div`
-  padding: 70px 60px;
+  padding: 30px 30px;
   background-color: #ffffff;
   border-radius: 30px;
 `;
@@ -37,7 +37,7 @@ const SummaryWrapper = styled(Wrapper)``;
 const CheckoutWrapper = styled(Wrapper)``;
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: 60fr 30fr;
+  grid-template-columns: 75fr 25fr;
   gap: 30px;
 `;
 const Container = styled.div`

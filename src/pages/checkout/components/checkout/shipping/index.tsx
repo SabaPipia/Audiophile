@@ -1,7 +1,5 @@
-import React from "react";
 import { Header, InputWrapper, Wrapper } from "..";
 import Input from "../input";
-import { styled } from "styled-components";
 
 function Shipping() {
   return (
