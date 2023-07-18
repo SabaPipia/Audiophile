@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
+
 // ---------
 export const Content = styled.p`
   color: rgba(30, 30, 30, 0.6);
@@ -7,7 +8,13 @@ export const Content = styled.p`
 `;
 // ------
 export const Container = styled.div`
-  margin: 50px 200px 10px 200px;
+  padding: 50px 200px 10px 200px;
+  @media (max-width: 1440px) {
+    padding: 50px 120px;
+  }
+  @media (max-width: 1000px) {
+    padding: 30px 40px;
+  }
 `;
 export const BackButton = styled.button`
   border: none;
@@ -32,7 +39,7 @@ export const ProductPriceContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 15px;
-  width: 80%;
+  width: 100%;
 `;
 
 export const ProductPriceNew = styled.p`

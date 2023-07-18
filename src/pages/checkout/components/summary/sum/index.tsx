@@ -77,7 +77,7 @@ const TotalWrapper = styled.div`
 `;
 export const Button = styled.button`
   cursor: pointer;
-  padding: 15px 50px;
+  padding: 15px 0px;
   text-transform: uppercase;
   border: none;
   width: 100%;

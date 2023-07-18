@@ -1,5 +1,3 @@
-import Styled from "styled-components";
-
 export const modalStyles = {
   content: {
     top: "50%",

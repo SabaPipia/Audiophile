@@ -2,14 +2,14 @@ import React from "react";
 import { InputContainer, InputLabel, InputS } from "..";
 
 interface InputProps {
-  name: string;
+  value: string;
   placeH: string;
 }
 
-const Input: React.FC<InputProps> = ({ name, placeH }) => {
+const Input: React.FC<InputProps> = ({ value, placeH }) => {
   return (
     <InputContainer>
-      <InputLabel>{name}</InputLabel>
+      <InputLabel>{value}</InputLabel>
       <InputS placeholder={placeH} />
     </InputContainer>
   );

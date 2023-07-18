@@ -27,22 +27,26 @@ function ProductCard() {
       <Product bgcolor={true}>
         <ProductImg src={Zx9Speaker} />
         <ProductWrapper>
-          <ProductName>Zx9 speaker</ProductName>
-          <ProductInfo>
-            Upgrade to premium speakers that are phenomenally built to deliver
-            truly remarkable sound
-          </ProductInfo>
-          <LinkButton to={"/speakers/zx9-speaker"}>
-            <SecondaryBtnFill>See Product</SecondaryBtnFill>
-          </LinkButton>
+          <div>
+            <ProductName>Zx9 speaker</ProductName>
+            <ProductInfo>
+              Upgrade to premium speakers that are phenomenally built to deliver
+              truly remarkable sound
+            </ProductInfo>
+            <LinkButton to={"/speakers/zx9-speaker"}>
+              <SecondaryBtnFill>See Product</SecondaryBtnFill>
+            </LinkButton>
+          </div>
         </ProductWrapper>
       </Product>
       <ProductSecond>
         <ProductWrapperSec>
-          <ProductName>Zx7 speaker</ProductName>
-          <LinkButton to={"/speakers/zx7-speaker"}>
-            <SecondaryButton>See Product</SecondaryButton>
-          </LinkButton>
+          <div>
+            <ProductName>Zx7 speaker</ProductName>
+            <LinkButton to={"/speakers/zx7-speaker"}>
+              <SecondaryButton>See Product</SecondaryButton>
+            </LinkButton>
+          </div>
         </ProductWrapperSec>
       </ProductSecond>
       <Product bgcolor={false}>

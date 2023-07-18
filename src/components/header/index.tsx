@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import CartIcon from "../../assets/shared/desktop/icon-cart.svg";
 import Logo from "../../assets/shared/desktop/logo.svg";
-import * as styles from "../../components/variables";
 import { useState } from "react";
 import Cart from "../cart";
 
@@ -59,6 +58,15 @@ function Header() {
     </Div>
   );
 }
+const Container = styled.div`
+  padding: 30px 200px;
+  @media (max-width: 1440px) {
+    padding: 30px 120px;
+  }
+  @media (max-width: 1000px) {
+    padding: 30px 40px;
+  }
+`;
 const GlobalStyle = createGlobalStyle<{ modalV: boolean }>`
   body {
     overflow:${(props) => {
@@ -80,9 +88,6 @@ const ModalOverlay = styled.div`
   z-index: 9999;
 `;
 
-const Container = styled.div`
-  padding: ${styles.container};
-`;
 const NavLink = styled(Link)`
   &:link,
   &:visited {

@@ -57,6 +57,12 @@ const FooterWrapper = styled.div`
   grid-template-columns: 1fr 1fr;
   background-color: #202020;
   padding: 80px 200px 30px 200px;
+  @media (max-width: 1440px) {
+    padding: 80px 120px 30px;
+  }
+  @media (max-width: 1000px) {
+    padding: 30px 40px;
+  }
 `;
 const About = styled.div``;
 const Links = styled.div`

@@ -1,6 +1,22 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+export const ProductCard = styled.div<{ flexdir: number }>`
+  display: flex;
+  flex-direction: ${(props) => {
+    return props.flexdir % 2 === 0 ? "row" : "row-reverse";
+  }};
+  gap: 120px;
+  align-items: center;
+  padding: 70px 200px;
+  @media (max-width: 1440px) {
+    padding: 70px 120px;
+    gap: 70px;
+  }
+  @media (max-width: 1000px) {
+    padding: 50px 40px;
+  }
+`;
 export const Header = styled.h1`
   text-align: center;
   color: #fff;
@@ -8,23 +24,20 @@ export const Header = styled.h1`
   text-transform: uppercase;
   padding: 60px;
 `;
-export const ProductCard = styled.div<{ flexdir: number }>`
-  display: flex;
-  flex-direction: ${(props) => {
-    return props.flexdir % 2 === 0 ? "row" : "row-reverse";
-  }};
-  margin: 100px 200px;
-  gap: 120px;
-  align-items: center;
-`;
 export const ProductWrapper = styled.div``;
 export const ProductImage = styled.img`
   width: 450px;
+  @media (max-width: 1000px) {
+    width: 300px;
+  }
 `;
 export const ProductContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+  @media (max-width: 1000px) {
+    gap: 20px;
+  }
 `;
 export const ContentNew = styled.h4`
   font-size: 15px;

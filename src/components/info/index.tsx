@@ -21,6 +21,21 @@ function ProductsInfo() {
     </Container>
   );
 }
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  padding: 20px 200px;
+  @media (max-width: 1440px) {
+    padding: 20px 120px;
+  }
+  @media (max-width: 1300px) {
+    gap: 50px;
+  }
+  @media (max-width: 1000px) {
+    padding: 30px 40px;
+  }
+`;
 const Head = styled.h1`
   text-transform: uppercase;
   font-size: 50px;
@@ -32,14 +47,9 @@ const Paragraph = styled.p`
   color: #777;
   font-size: 18px;
 `;
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 100vh;
-  margin: 30px 200px;
-`;
 const Content = styled.div`
-  width: 700px;
+  max-width: 600px;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
