@@ -21,7 +21,7 @@ export const HeroContent = styled.div`
   gap: 30px;
 `;
 export const Product = styled.h3`
-  color: #444;
+  color: #d87d4a;
   text-transform: uppercase;
   font-size: 16px;
   letter-spacing: 5px;

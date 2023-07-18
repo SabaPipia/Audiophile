@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import { CartContext } from "../../../../Root";
 
 function Card() {
@@ -28,6 +28,7 @@ function Card() {
     </>
   );
 }
+
 const CardWrapper = styled.div`
   display: flex;
   justify-content: space-between;

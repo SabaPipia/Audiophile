@@ -1,7 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
 import Summary from "./components/summary";
 import Checkout from "./components/checkout";
-import Total from "./components/summary/sum";
 
 function Main() {
   return (

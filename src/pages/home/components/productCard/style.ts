@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Zx7Speaker from "../../../../assets/home/desktop/image-speaker-zx7.jpg";
-import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   margin: 20px 200px;
@@ -37,8 +36,6 @@ export const ImgWrapper = styled.div`
   height: 80%;
   img {
     border-radius: 30px;
-    /* height: 100%; */
-    /* width: 550px; */
   }
 `;
 
