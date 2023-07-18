@@ -5,8 +5,8 @@ function EMoney() {
   return (
     <>
       <EMoneyWrapper>
-        <Input name="e-Money Number" placeH="123456789" />
-        <Input name="e-Money Pin" placeH="1234" />
+        <Input value="e-Money Number" placeH="123456789" />
+        <Input value="e-Money Pin" placeH="1234" />
       </EMoneyWrapper>
     </>
   );

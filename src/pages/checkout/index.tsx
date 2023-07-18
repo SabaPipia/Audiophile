@@ -35,12 +35,21 @@ const SummaryWrapper = styled(Wrapper)``;
 const CheckoutWrapper = styled(Wrapper)``;
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: 75fr 25fr;
-  gap: 30px;
+  grid-template-columns: 70fr 30fr;
+  gap: 20px;
+  @media (max-width: 1135px) {
+    display: grid;
+    grid-template-columns: 60fr 40fr;
+  }
 `;
 const Container = styled.div`
-  margin: 70px 100px;
-  padding: 40px 100px;
+  padding: 90px 200px;
+  @media (max-width: 1440px) {
+    padding: 30px 120px;
+  }
+  @media (max-width: 1300px) {
+    padding: 40px 40px;
+  }
 `;
 
 export default Main;

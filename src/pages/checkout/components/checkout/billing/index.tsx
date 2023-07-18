@@ -6,9 +6,9 @@ function Billing() {
     <Wrapper>
       <Header>Billing details</Header>
       <InputWrapper>
-        <Input name="Name" placeH="John Doe" />
-        <Input name="Email Address" placeH="johndoe@gmail.com" />
-        <Input name="Phone Number" placeH="+995 123 456 789" />
+        <Input value="Name" placeH="John Doe" />
+        <Input value="Email Address" placeH="johndoe@gmail.com" />
+        <Input value="Phone Number" placeH="+995 123 456 789" />
       </InputWrapper>
     </Wrapper>
   );

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import HeroImage from "../../assets/home/desktop/image-hero.jpg";
-import * as styles from "../../components/variables";
 import { Link } from "react-router-dom";
 // Hero
 export const Hero = styled.div`
@@ -12,16 +11,22 @@ export const Hero = styled.div`
   grid-template-columns: 1fr 1fr;
 `;
 export const HeroContent = styled.div`
-  padding: ${styles.container};
+  padding: 20px 200px;
   text-align: start;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 30px;
+  @media (max-width: 1440px) {
+    padding: 20px 120px;
+  }
+  @media (max-width: 1000px) {
+    padding: 30px 40px;
+  }
 `;
 export const Product = styled.h3`
-  color: #d87d4a;
+  color: #444;
   text-transform: uppercase;
   font-size: 16px;
   letter-spacing: 5px;
@@ -47,11 +52,17 @@ export const BtnWrapper = styled.div`
 
 // Cards
 export const CardWrapper = styled.div`
-  padding: ${styles.container};
+  padding: 20px 200px;
   padding-top: 80px;
   padding-bottom: 80px;
   display: flex;
   justify-content: space-between;
+  @media (max-width: 1440px) {
+    padding: 20px 120px;
+  }
+  @media (max-width: 1000px) {
+    padding: 30px 40px;
+  }
 `;
 export const Card = styled.div`
   cursor: pointer;

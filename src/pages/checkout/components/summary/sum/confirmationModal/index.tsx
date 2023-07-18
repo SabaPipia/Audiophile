@@ -24,7 +24,7 @@ interface ConfirmationModalProps {
 const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   grandTotal,
 }) => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, setCartItems } = useContext(CartContext);
   return (
     <ConfirmationModalWrapper>
       <MainMessageWrapper>
@@ -72,7 +72,9 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
         }
       })}
       <BackToHomeBTN to={"/home"}>
-        <PrimaryButton>Back To Home</PrimaryButton>
+        <PrimaryButton onClick={() => setCartItems([])}>
+          Back To Home
+        </PrimaryButton>
       </BackToHomeBTN>
     </ConfirmationModalWrapper>
   );

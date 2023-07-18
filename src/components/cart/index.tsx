@@ -169,10 +169,16 @@ export const ModalCard = styled.div`
   gap: 30px;
   position: absolute;
   top: 20px;
-  right: 220px;
+  right: 230px;
   background-color: white;
   padding: 30px;
   width: 350px;
+  @media (max-width: 1300px) {
+    right: 130px;
+  }
+  @media (max-width: 1000px) {
+    right: 40px;
+  }
 `;
 const ModalHeader = styled.div`
   display: flex;
