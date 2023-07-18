@@ -5,7 +5,7 @@ import {
   QuantityInput,
 } from "../../pages/productDetails/style";
 import { CartContext } from "../../pages/Root";
-import { useState, useContext } from "react";
+import { useState, useContext, useMemo } from "react";
 import RemoveConfirmation from "./removeConfirmation";
 import { Link } from "react-router-dom";
 
@@ -14,7 +14,6 @@ interface CartProps {
 }
 const Cart: React.FC<CartProps> = ({ toggleModal }) => {
   const { cartItems, removeAll, setCartItems } = useContext(CartContext);
-
   const [rerender, setRerender] = useState(false);
   const [appearRemoveItem, setAppearRemoveItem] = useState(false);
   const [selectedItem, SetSelectedItem] = useState<{
@@ -31,6 +30,7 @@ const Cart: React.FC<CartProps> = ({ toggleModal }) => {
     });
     return price;
   };
+
   const incrementByOne = (quantity: number, itemName: string) => {
     const newCount = quantity + 1;
     cartItems.map((item) => {
@@ -72,6 +72,7 @@ const Cart: React.FC<CartProps> = ({ toggleModal }) => {
     }
     return randomUrl;
   };
+
   return (
     <>
       <ModalCard>

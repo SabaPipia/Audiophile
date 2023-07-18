@@ -1,15 +1,34 @@
+import React from "react";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../../Root";
 import { styled } from "styled-components";
 import SumCard from "./sumCard";
+import ReactDOM from "react-dom";
+import Modal from "react-modal";
+import { modalStyles } from "./Modal.styles";
 
+import ConfirmationModal from "./confirmationModal";
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+Modal.setAppElement("#modal");
 function Total() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const [amount, setAmount] = useState("");
   const [shippingFee, setShippingFee] = useState(50);
   const [vat, setVat] = useState("");
   const [grandTotal, setGrandTotal] = useState("");
 
   const { cartItems } = useContext(CartContext);
+  // Modal
+  function openModal() {
+    setModalIsOpen(true);
+  }
+  function closeModal() {
+    setModalIsOpen(false);
+  }
+  // Modal
+
   useEffect(() => {
     const modifiedSum = cartItems.reduce((total, item) => {
       if (item.price && item.quantity) {
@@ -20,7 +39,6 @@ function Total() {
 
     const vatRate = 0.2;
     const sumToNumber = modifiedSum;
-    console.log(sumToNumber);
     const vatValue = Math.floor(sumToNumber * vatRate);
     const grandTotalValue = sumToNumber + vatValue + shippingFee;
 
@@ -31,6 +49,15 @@ function Total() {
 
   return (
     <TotalWrapper>
+      {modalIsOpen ? (
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={modalStyles}
+        >
+          <ConfirmationModal grandTotal={grandTotal} />
+        </Modal>
+      ) : null}
       <SumWrapper>
         <SumCard name="total" value={amount} />
         <SumCard name="shipping" value={shippingFee} />
@@ -40,10 +67,11 @@ function Total() {
         <GrandTotalText>Grand Total</GrandTotalText>
         <GrandTotalAmount>${grandTotal}</GrandTotalAmount>
       </GrandWrapper>
-      <PrimaryButton>Continue & pay</PrimaryButton>
+      <PrimaryButton onClick={openModal}>Continue & pay</PrimaryButton>
     </TotalWrapper>
   );
 }
+
 const TotalWrapper = styled.div`
   margin-top: 40px;
 `;

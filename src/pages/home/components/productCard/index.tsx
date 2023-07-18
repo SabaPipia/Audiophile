@@ -32,7 +32,7 @@ function ProductCard() {
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound
           </ProductInfo>
-          <LinkButton to={"/speakers/ZX9%20Speaker"}>
+          <LinkButton to={"/speakers/zx9-speaker"}>
             <SecondaryBtnFill>See Product</SecondaryBtnFill>
           </LinkButton>
         </ProductWrapper>
@@ -40,7 +40,7 @@ function ProductCard() {
       <ProductSecond>
         <ProductWrapperSec>
           <ProductName>Zx7 speaker</ProductName>
-          <LinkButton to={"/speakers/ZX7%20Speaker"}>
+          <LinkButton to={"/speakers/zx7-speaker"}>
             <SecondaryButton>See Product</SecondaryButton>
           </LinkButton>
         </ProductWrapperSec>
@@ -52,7 +52,7 @@ function ProductCard() {
         <LastProduct>
           <ProductWrapper>
             <ProductName color={"#000"}>yx1 Earphones</ProductName>
-            <LinkButton to={"/earphones/YX1%20Wireless%20Earphones"}>
+            <LinkButton to={"/earphones/yx1-earphones"}>
               <SecondaryButton>See Product</SecondaryButton>
             </LinkButton>
           </ProductWrapper>

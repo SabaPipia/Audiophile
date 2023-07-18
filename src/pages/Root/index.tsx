@@ -1,9 +1,5 @@
 import Header from "../../components/header";
-import {
-  Outlet,
-  ScrollRestoration,
-  useLocation,
-} from "react-router-dom";
+import { Outlet, ScrollRestoration, useLocation } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import Footer from "../../components/footer";
 import ProductsInfo from "../../components/info";
@@ -56,23 +52,21 @@ function Root() {
   }, [location]);
   return (
     <>
-      <>
-        <GlobalStyle />
-        <CartContext.Provider
-          value={{ cartItems, addToCart, removeAll, setCartItems }}
-        >
-          <Header />
-          <Outlet />
-          {checkout ? null : (
-            <>
-              {location.pathname !== "/home" ? <CardComponent /> : null}
-              <ProductsInfo />
-            </>
-          )}
-        </CartContext.Provider>
-        <ScrollRestoration />
-        <Footer />
-      </>
+      <GlobalStyle />
+      <CartContext.Provider
+        value={{ cartItems, addToCart, removeAll, setCartItems }}
+      >
+        <Header />
+        <Outlet />
+        {checkout ? null : (
+          <>
+            {location.pathname !== "/home" ? <CardComponent /> : null}
+            <ProductsInfo />
+          </>
+        )}
+      </CartContext.Provider>
+      <ScrollRestoration />
+      <Footer />
     </>
   );
 }
@@ -82,5 +76,7 @@ const GlobalStyle = createGlobalStyle`
   font-family:'Manrope', sans-serif;
   margin: 0;
   padding: 0;
-}`;
+}
+
+`;
 export default Root;

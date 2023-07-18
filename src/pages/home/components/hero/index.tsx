@@ -20,7 +20,7 @@ function HeroComponent() {
           for the passionate music enthusiast
         </ProductInfo>
         <BtnWrapper>
-          <LinkButton to={"/headphones/XX99%20Mark%20II%20Headphones"}>
+          <LinkButton to={"/headphones/xx99-mark-two-headphones"}>
             <PrimaryButton>See Product</PrimaryButton>
           </LinkButton>
         </BtnWrapper>
