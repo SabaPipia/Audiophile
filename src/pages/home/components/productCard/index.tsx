@@ -18,6 +18,7 @@ import {
   ImgWrapper,
   ProductImgT,
   LastProduct,
+  FirstContent,
 } from "./style";
 import { LinkButton } from "../../style";
 
@@ -27,7 +28,7 @@ function ProductCard() {
       <Product bgcolor={true}>
         <ProductImg src={Zx9Speaker} />
         <ProductWrapper>
-          <div>
+          <FirstContent>
             <ProductName>Zx9 speaker</ProductName>
             <ProductInfo>
               Upgrade to premium speakers that are phenomenally built to deliver
@@ -36,17 +37,15 @@ function ProductCard() {
             <LinkButton to={"/speakers/zx9-speaker"}>
               <SecondaryBtnFill>See Product</SecondaryBtnFill>
             </LinkButton>
-          </div>
+          </FirstContent>
         </ProductWrapper>
       </Product>
       <ProductSecond>
         <ProductWrapperSec>
-          <div>
-            <ProductName>Zx7 speaker</ProductName>
-            <LinkButton to={"/speakers/zx7-speaker"}>
-              <SecondaryButton>See Product</SecondaryButton>
-            </LinkButton>
-          </div>
+          <ProductName>Zx7 speaker</ProductName>
+          <LinkButton to={"/speakers/zx7-speaker"}>
+            <SecondaryButton>See Product</SecondaryButton>
+          </LinkButton>
         </ProductWrapperSec>
       </ProductSecond>
       <Product bgcolor={false}>

@@ -1,63 +1,111 @@
 import { Link } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, css, keyframes } from "styled-components";
 import CartIcon from "../../assets/shared/desktop/icon-cart.svg";
 import Logo from "../../assets/shared/desktop/logo.svg";
 import { useState } from "react";
 import Cart from "../cart";
+import hamburder from "../../assets/shared/tablet/icon-hamburger.svg";
+import BurgerMenu from "../burgerMenu";
 
 function Header() {
   const [modalVisible, setModalVisible] = useState(false);
+  const [burgerVisible, setBurgerVisible] = useState(false);
 
   const toggleModal = () => {
     setModalVisible(!modalVisible);
   };
+
+  const toggleBurger = () => {
+    setBurgerVisible(!burgerVisible);
+  };
+
   return (
-    <Div>
-      <GlobalStyle modalV={modalVisible} />
-      <Container
-        onClick={() => {
-          if (!modalVisible) {
-            return;
-          } else {
-            toggleModal();
-          }
-        }}
-      >
-        <Navbar>
-          <Wrapper>
-            <NavLink to={"/home"}>
-              <img src={Logo} />
-            </NavLink>
-          </Wrapper>
-          <LinkWrapper>
-            <ItemContainer>
-              <Item>
-                <NavLink to={"/home"}>Home</NavLink>
-              </Item>
-              <Item>
-                <NavLink to={"headphones"}>Headphones</NavLink>
-              </Item>
-              <Item>
-                <NavLink to={"speakers"}>Speakers</NavLink>
-              </Item>
-              <Item>
-                <NavLink to={"earphones"}>Earphones</NavLink>
-              </Item>
-            </ItemContainer>
-          </LinkWrapper>
-          <Wrapper>
-            <CardImg src={CartIcon} onClick={toggleModal} />
-          </Wrapper>
-        </Navbar>
-      </Container>
-      {modalVisible ? (
-        <ModalOverlay>
-          <Cart toggleModal={toggleModal} />
-        </ModalOverlay>
-      ) : null}
-    </Div>
+    <>
+      <Div>
+        <GlobalStyle modalV={modalVisible} />
+        <Container
+          onClick={() => {
+            if (!modalVisible) {
+              return;
+            } else {
+              toggleModal();
+            }
+          }}
+        >
+          <Navbar>
+            <Wrapper>
+              <HamburderIcon src={hamburder} onClick={toggleBurger} />
+              <NavLink to={"/home"}>
+                <img src={Logo} />
+              </NavLink>
+            </Wrapper>
+            <LinkWrapper>
+              <ItemContainer>
+                <Item>
+                  <NavLink to={"/home"}>Home</NavLink>
+                </Item>
+                <Item>
+                  <NavLink to={"headphones"}>Headphones</NavLink>
+                </Item>
+                <Item>
+                  <NavLink to={"speakers"}>Speakers</NavLink>
+                </Item>
+                <Item>
+                  <NavLink to={"earphones"}>Earphones</NavLink>
+                </Item>
+              </ItemContainer>
+            </LinkWrapper>
+            <Wrapper>
+              <CardImg src={CartIcon} onClick={toggleModal} />
+            </Wrapper>
+          </Navbar>
+        </Container>
+        {modalVisible ? (
+          <ModalOverlay>
+            <Cart toggleModal={toggleModal} />
+          </ModalOverlay>
+        ) : null}
+      </Div>
+      <BurgerWrapper burgervisible={burgerVisible}>
+        <BurgerMenu burger={toggleBurger} />
+      </BurgerWrapper>
+    </>
   );
 }
+const bounceAmount = "40px";
+const bounceAmount2 = "20px";
+const slideInAnimation = keyframes`
+  0% {
+    left: -100%;
+  }
+  10% {
+    left: calc(-100% + ${bounceAmount});
+  }
+  20% {
+    left: 0;
+  }
+  30% {
+    left: calc(0% - ${bounceAmount2});
+  }
+  40% {
+    left:0;
+  }
+  100% {
+    left: 0;
+  }
+`;
+const BurgerWrapper = styled.div<{ burgervisible: boolean }>`
+  position: absolute;
+  left: -100%;
+  width: 100%;
+  background-color: #fff;
+  transition: all 1s;
+  ${({ burgervisible }) =>
+    burgervisible &&
+    css`
+      animation: ${slideInAnimation} 1s forwards;
+    `}
+`;
 const Container = styled.div`
   padding: 30px 200px;
   @media (max-width: 1440px) {
@@ -111,10 +159,18 @@ const Navbar = styled.nav`
   font-size: 13px;
   position: relative;
 `;
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 35px;
+`;
 const LinkWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 const CardImg = styled.img`
   cursor: pointer;
@@ -129,5 +185,12 @@ export const Item = styled.li`
 
 export const ItemContainer = styled.ul`
   display: flex;
+`;
+export const HamburderIcon = styled.img`
+  display: none;
+  height: 100%;
+  @media (max-width: 768px) {
+    display: inline;
+  }
 `;
 export default Header;

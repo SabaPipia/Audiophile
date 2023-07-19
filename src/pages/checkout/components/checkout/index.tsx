@@ -25,6 +25,10 @@ export const InputWrapper = styled.div`
     display: flex;
     flex-direction: column;
   }
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 export const InputContainer = styled.div`
   display: flex;

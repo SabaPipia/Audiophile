@@ -15,5 +15,8 @@ const EMoneyWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  @media (max-width: 1135px) {
+    grid-template-columns: 1fr;
+  }
 `;
 export default EMoney;

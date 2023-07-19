@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Img from "../../assets/shared/desktop/image-best-gear.jpg";
+import ImgTablet from "../../assets/shared/tablet/image-best-gear.jpg";
 
 function ProductsInfo() {
   return (
@@ -24,7 +25,7 @@ function ProductsInfo() {
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 100vh;
+  height: 700px;
   padding: 20px 200px;
   @media (max-width: 1440px) {
     padding: 20px 120px;
@@ -34,6 +35,10 @@ const Container = styled.div`
   }
   @media (max-width: 1000px) {
     padding: 30px 40px;
+  }
+  @media (max-width: 840px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
   }
 `;
 const Head = styled.h1`
@@ -55,10 +60,22 @@ const Content = styled.div`
   justify-content: center;
   align-items: start;
   gap: 30px;
+  @media (max-width: 840px) {
+    max-width: 100%;
+    order: 2;
+    text-align: center;
+    padding: 0px 50px;
+  }
 `;
 const Image = styled.div`
   background-image: url(${Img});
   background-repeat: no-repeat;
   background-position: right;
+  @media (max-width: 840px) {
+    background-image: url(${ImgTablet});
+    background-position: center;
+    background-size: cover;
+    order: 1;
+  }
 `;
 export default ProductsInfo;
