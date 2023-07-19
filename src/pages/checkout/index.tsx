@@ -41,6 +41,10 @@ const GridContainer = styled.div`
     display: grid;
     grid-template-columns: 60fr 40fr;
   }
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 const Container = styled.div`
   padding: 90px 200px;

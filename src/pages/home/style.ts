@@ -1,19 +1,30 @@
 import styled from "styled-components";
 import HeroImage from "../../assets/home/desktop/image-hero.jpg";
+import HeroImageTablet from "../../assets/home/tablet/image-header.jpg";
 import { Link } from "react-router-dom";
 // Hero
 export const Hero = styled.div`
-  min-height: calc(100vh - 68px);
+  min-height: calc(100vh - 88px);
   background: url(${HeroImage}) no-repeat;
   background-size: cover;
-  background-position: 0%;
+  /* background-position: 0%; */
   display: grid;
   grid-template-columns: 1fr 1fr;
+  @media (max-height: 700px) {
+    background-position: center;
+  }
+  @media (max-width: 840px) {
+    display: flex;
+    justify-content: center;
+    /* background-position: -250px; */
+    background: url(${HeroImageTablet});
+    background-position: center;
+    background-size: cover;
+  }
 `;
 export const HeroContent = styled.div`
   padding: 20px 200px;
   text-align: start;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,6 +34,10 @@ export const HeroContent = styled.div`
   }
   @media (max-width: 1000px) {
     padding: 30px 40px;
+  }
+  @media (max-width: 840px) {
+    text-align: center;
+    width: 379px;
   }
 `;
 export const Product = styled.h3`
@@ -41,10 +56,14 @@ export const ProductName = styled.h1<{ color?: string }>`
   }};
   text-transform: uppercase;
   font-size: 50px;
+  margin-bottom: 25px;
 `;
 export const ProductInfo = styled.p`
   color: #999;
   width: 350px;
+  @media screen {
+    width: 100%;
+  }
 `;
 export const BtnWrapper = styled.div`
   display: inline;

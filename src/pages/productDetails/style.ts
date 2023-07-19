@@ -28,12 +28,13 @@ export const ProductContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 70px;
+  @media (max-width: 768px) {
+    gap: 0px;
+  }
 `;
-
 export const ProductImage = styled.img`
   width: 90%;
 `;
-
 export const ProductPriceContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -41,7 +42,6 @@ export const ProductPriceContainer = styled.div`
   gap: 15px;
   width: 100%;
 `;
-
 export const ProductPriceNew = styled.p`
   color: #d87d4a;
   letter-spacing: 3px;
@@ -94,6 +94,9 @@ export const CardContainer = styled.div`
 export const Card = styled.div`
   width: 28%;
   text-align: center;
+  @media (max-width: 768px) {
+    width: 32%;
+  }
 `;
 export const CardImg = styled.img`
   width: 100%;

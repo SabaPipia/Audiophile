@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Zx7Speaker from "../../../../assets/home/desktop/image-speaker-zx7.jpg";
+import Zx7SpeakerTablet from "../../../../assets/home/tablet/image-speaker-zx7.jpg";
 
 export const Container = styled.div`
   padding: 20px 200px;
@@ -8,6 +9,11 @@ export const Container = styled.div`
   }
   @media (max-width: 1000px) {
     padding: 30px 40px;
+  }
+  @media (max-width: 768px) {
+    &:last-child {
+      width: 320px;
+    }
   }
 `;
 interface ProductProps {
@@ -28,18 +34,24 @@ export const Product = styled.div<ProductProps>`
   border-radius: 30px;
   align-items: center;
   &:last-child {
-    gap: 30px;
+    gap: 10px;
     align-items: start;
   }
   @media (max-width: 1440px) {
     justify-content: center;
+  }
+  @media (max-width: 840px) {
+    &:first-child {
+      display: flex;
+      flex-direction: column;
+    }
   }
 `;
 export const LastProduct = styled.div`
   display: flex;
   background-color: #cecece;
   border-radius: 30px;
-  height: 80%;
+  height: 100%;
   padding-left: 80px;
   align-items: center;
   @media (max-width: 1440px) {
@@ -54,18 +66,19 @@ export const LastProduct = styled.div`
       font-size: 30px;
     }
   }
+  @media (max-width: 768px) {
+    /* height: 100%; */
+  }
 `;
 export const ImgWrapper = styled.div`
   width: 100%;
   border-radius: 30px;
-  height: 80%;
   img {
     border-radius: 30px;
   }
 `;
 
 export const ProductImgT = styled.img`
-  width: 0;
   width: 100%;
   height: 100%;
 `;
@@ -85,12 +98,19 @@ export const ProductImg = styled.img`
       width: 350px;
     }
   }
+  @media (max-width: 840px) {
+    &:first-child {
+      transform: translate(0%, 0%);
+      width: 250px;
+    }
+  }
 `;
 export const ProductWrapper = styled.div`
   div {
     display: flex;
     flex-direction: column;
     gap: 30px;
+
     h1 {
       font-size: 50px;
     }
@@ -98,19 +118,35 @@ export const ProductWrapper = styled.div`
       color: #f4f5fa;
     }
     button {
-      width: 200px;
+      /* width: 200px; */
     }
   }
   @media (max-width: 1440px) {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     div {
       h1 {
         font-size: 40px;
       }
     }
+  }
+`;
+export const FirstContent = styled.div`
+  @media (max-width: 840px) {
+    & {
+      text-align: center;
+      padding-bottom: 30px;
+    }
+  }
+  @media (max-width: 768px) {
+    & {
+      width: 350px;
+    }
+  }
+  h1 {
+    margin-bottom: 0px;
   }
 `;
 
@@ -129,6 +165,10 @@ export const ProductSecond = styled.div`
   text-align: center;
   @media (max-width: 1150px) {
     background-position-x: center;
+  }
+  @media (max-width: 768px) {
+    background-image: url(${Zx7SpeakerTablet});
+    height: 320px;
   }
 `;
 export const ProductWrapperSec = styled.div`

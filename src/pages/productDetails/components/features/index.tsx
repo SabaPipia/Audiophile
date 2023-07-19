@@ -12,11 +12,11 @@ const Features: React.FC<FeaturesProps> = ({ productData }) => {
       <FeaturesContent>
         <FeaturesContainer>
           <FeaturesHeader>features</FeaturesHeader>
-          <FeaturesHeader>in the box</FeaturesHeader>
+          <Content>{productData?.features}</Content>
         </FeaturesContainer>
         <FeaturesContainer>
-          <Content>{productData?.features}</Content>
           <Includes>
+            <FeaturesHeader>in the box</FeaturesHeader>
             <BoxLine>
               <div>
                 {productData?.includes.map((item) => {
@@ -42,24 +42,35 @@ const Features: React.FC<FeaturesProps> = ({ productData }) => {
 
 const FeaturesContent = styled.div`
   margin-top: 120px;
-`;
-
-const FeaturesContainer = styled.div`
   display: grid;
   grid-template-columns: 70fr 30fr;
   gap: 80px;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
+
+const FeaturesContainer = styled.div``;
 
 const FeaturesHeader = styled.h1`
   text-transform: uppercase;
   margin-bottom: 30px;
 `;
 
-const Includes = styled.div``;
+const Includes = styled.div`
+  @media (max-width: 768px) {
+    display: flex;
+  }
+`;
 
 const BoxLine = styled.div`
   display: flex;
   gap: 20px;
+  @media (max-width: 768px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 const BoxQuantity = styled.h3`

@@ -5,7 +5,7 @@ import {
   QuantityInput,
 } from "../../pages/productDetails/style";
 import { CartContext } from "../../pages/Root";
-import { useState, useContext, useMemo } from "react";
+import { useState, useContext } from "react";
 import RemoveConfirmation from "./removeConfirmation";
 import { Link } from "react-router-dom";
 

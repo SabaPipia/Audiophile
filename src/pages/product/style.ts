@@ -16,6 +16,10 @@ export const ProductCard = styled.div<{ flexdir: number }>`
   @media (max-width: 1000px) {
     padding: 50px 40px;
   }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+  }
 `;
 export const Header = styled.h1`
   text-align: center;
