@@ -40,10 +40,19 @@ const Container = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
   }
+  @media (max-width: 550px) {
+    height: 100%;
+  }
 `;
 const Head = styled.h1`
   text-transform: uppercase;
   font-size: 50px;
+  @media (max-width: 600px) {
+    font-size: 54px;
+  }
+  @media (max-width: 550px) {
+    font-size: 35px;
+  }
 `;
 const Span = styled.span`
   color: #d87d4a;
@@ -51,6 +60,9 @@ const Span = styled.span`
 const Paragraph = styled.p`
   color: #777;
   font-size: 18px;
+  @media (max-width: 550px) {
+    font-size: 16px;
+  }
 `;
 const Content = styled.div`
   max-width: 600px;
@@ -65,6 +77,10 @@ const Content = styled.div`
     order: 2;
     text-align: center;
     padding: 0px 50px;
+  }
+  @media (max-width: 550px) {
+    padding: 0px;
+    justify-content: start;
   }
 `;
 const Image = styled.div`

@@ -62,7 +62,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
               <TotalContainer>
                 <div>
                   <h2>Grand Total</h2>
-                  <h3>${grandTotal}</h3>
+                  <h3>$ {grandTotal}</h3>
                 </div>
               </TotalContainer>
             </ItemReceipt>

@@ -21,12 +21,10 @@ function Total() {
 
   const { cartItems } = useContext(CartContext);
   // Modal
-  function openModal() {
-    setModalIsOpen(true);
+  function toggleModal() {
+    setModalIsOpen(!modalIsOpen);
   }
-  function closeModal() {
-    setModalIsOpen(false);
-  }
+
   // Modal
 
   useEffect(() => {
@@ -52,7 +50,7 @@ function Total() {
       {modalIsOpen ? (
         <Modal
           isOpen={modalIsOpen}
-          onRequestClose={closeModal}
+          onRequestClose={toggleModal}
           style={modalStyles}
         >
           <ConfirmationModal grandTotal={grandTotal} />
@@ -67,7 +65,7 @@ function Total() {
         <GrandTotalText>Grand Total</GrandTotalText>
         <GrandTotalAmount>${grandTotal}</GrandTotalAmount>
       </GrandWrapper>
-      <PrimaryButton onClick={openModal}>Continue & pay</PrimaryButton>
+      <PrimaryButton onClick={toggleModal}>Continue & pay</PrimaryButton>
     </TotalWrapper>
   );
 }

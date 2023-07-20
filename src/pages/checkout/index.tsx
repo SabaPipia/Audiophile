@@ -24,12 +24,23 @@ function Main() {
 const GlobalStyle = createGlobalStyle`
 body{
   background-color:#F1F1F1
-}`;
+ 
+}
+@media (max-width:375px) {
+  body{
+    background-color:#fff
+  }
+}
+`;
 
 const Wrapper = styled.div`
   padding: 30px 30px;
   background-color: #ffffff;
   border-radius: 30px;
+  @media (max-width: 375px) {
+    background-color: #fff;
+    padding: 0px 0px;
+  }
 `;
 const SummaryWrapper = styled(Wrapper)``;
 const CheckoutWrapper = styled(Wrapper)``;

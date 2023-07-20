@@ -39,6 +39,10 @@ function Payment() {
 const PaymentWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  @media (max-width: 465px) {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 `;
 const PaymentLabel = styled.h4``;
 const RadioLabel = styled.label``;

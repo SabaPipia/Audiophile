@@ -6,6 +6,10 @@ export const ConfirmationModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 35px;
+  @media (max-width: 465px) {
+    padding: 0px;
+    width: 250px;
+  }
 `;
 
 export const MainMessageWrapper = styled.div`
@@ -30,6 +34,9 @@ export const ItemReceipt = styled.div`
   display: grid;
   grid-template-columns: 60fr 40fr;
   border-radius: 20px;
+  @media (max-width: 465px) {
+    grid-template-columns: 1fr;
+  }
 `;
 export const VisibleItemContainer = styled.div`
   display: flex;
@@ -86,6 +93,10 @@ export const TotalContainer = styled.div`
     font-weight: 400;
     color: #fff;
     font-size: 16px;
+  }
+  @media (max-width: 465px) {
+    padding: 20px;
+    align-items: start;
   }
 `;
 

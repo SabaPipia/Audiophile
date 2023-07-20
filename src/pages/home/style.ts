@@ -39,6 +39,10 @@ export const HeroContent = styled.div`
     text-align: center;
     width: 379px;
   }
+  @media (max-width: 500px) {
+    padding: 0;
+    max-width: 375px;
+  }
 `;
 export const Product = styled.h3`
   color: #444;
@@ -82,6 +86,10 @@ export const CardWrapper = styled.div`
   @media (max-width: 1000px) {
     padding: 30px 40px;
   }
+  @media (max-width: 700px) {
+    flex-direction: column;
+    gap: 30px;
+  }
 `;
 export const Card = styled.div`
   cursor: pointer;
@@ -99,10 +107,18 @@ export const Card = styled.div`
     background-color: rgba(250, 229, 207, 0.6);
     transform: translateY(-10px);
   }
+  @media (max-width: 700px) {
+    /* flex-direction: column; */
+    padding: 20px 0px;
+    width: 100%;
+  }
 `;
 export const CardHead = styled.h3`
   color: #000;
   text-transform: uppercase;
+  @media (max-width: 700px) {
+    font-size: 16px;
+  }
 `;
 export const CardBtnDiv = styled.div`
   display: flex;
