@@ -31,7 +31,7 @@ export const Product = styled.div<ProductProps>`
   justify-content: space-between;
   grid-template-columns: 1fr 1fr;
   overflow: hidden;
-  border-radius: 30px;
+  border-radius: 10px;
   align-items: center;
   &:last-child {
     gap: 10px;
@@ -46,11 +46,16 @@ export const Product = styled.div<ProductProps>`
       flex-direction: column;
     }
   }
+  @media (max-width: 500px) {
+    &:last-child {
+      grid-template-columns: 1fr;
+    }
+  }
 `;
 export const LastProduct = styled.div`
   display: flex;
-  background-color: #cecece;
-  border-radius: 30px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
   height: 100%;
   padding-left: 80px;
   align-items: center;
@@ -66,15 +71,25 @@ export const LastProduct = styled.div`
       font-size: 30px;
     }
   }
-  @media (max-width: 768px) {
-    /* height: 100%; */
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 22px;
+    }
+    button {
+      padding: 15px 30px;
+    }
+  }
+  @media (max-width: 500px) {
+    div {
+      padding: 30px;
+    }
   }
 `;
 export const ImgWrapper = styled.div`
   width: 100%;
-  border-radius: 30px;
+  border-radius: 10px;
   img {
-    border-radius: 30px;
+    border-radius: 10px;
   }
 `;
 
@@ -148,6 +163,13 @@ export const FirstContent = styled.div`
   h1 {
     margin-bottom: 0px;
   }
+  @media (max-width: 4350px) {
+    width: 100%;
+    align-items: center;
+    p {
+      width: 250px;
+    }
+  }
 `;
 
 export const ProductSecond = styled.div`
@@ -159,7 +181,7 @@ export const ProductSecond = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   height: 400px;
-  border-radius: 30px;
+  border-radius: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
   text-align: center;
@@ -180,8 +202,22 @@ export const ProductWrapperSec = styled.div`
     background: none;
     border: 1px solid #000;
     color: #000;
-    font-weight: 700;
     text-align: start;
     padding: 15px 20px;
+  }
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 28px;
+    }
+  }
+  @media (max-width: 465px) {
+    h1 {
+      font-size: 22px;
+    }
+  }
+  @media (max-width: 375px) {
+    h1 {
+      font-size: 21px;
+    }
   }
 `;

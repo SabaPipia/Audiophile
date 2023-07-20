@@ -52,8 +52,6 @@ const ProductDetails = () => {
     const count = quantity + 1;
     if (quantity != 99) {
       setQuantity(count);
-    } else {
-      //#Todo Error: Maximum quantity reached.
     }
   };
 
@@ -61,8 +59,6 @@ const ProductDetails = () => {
     const count = quantity - 1;
     if (quantity != 1) {
       setQuantity(count);
-    } else {
-      //##Todo Error: Minimum quantity reached.
     }
   };
   const handleAddToCart = () => {

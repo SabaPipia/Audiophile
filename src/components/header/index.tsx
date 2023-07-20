@@ -13,6 +13,7 @@ function Header() {
 
   const toggleModal = () => {
     setModalVisible(!modalVisible);
+    if (burgerVisible) setBurgerVisible(false);
   };
 
   const toggleBurger = () => {
@@ -45,13 +46,13 @@ function Header() {
                   <NavLink to={"/home"}>Home</NavLink>
                 </Item>
                 <Item>
-                  <NavLink to={"headphones"}>Headphones</NavLink>
+                  <NavLink to={"/headphones"}>Headphones</NavLink>
                 </Item>
                 <Item>
-                  <NavLink to={"speakers"}>Speakers</NavLink>
+                  <NavLink to={"/speakers"}>Speakers</NavLink>
                 </Item>
                 <Item>
-                  <NavLink to={"earphones"}>Earphones</NavLink>
+                  <NavLink to={"/earphones"}>Earphones</NavLink>
                 </Item>
               </ItemContainer>
             </LinkWrapper>
@@ -95,6 +96,7 @@ const slideInAnimation = keyframes`
   }
 `;
 const BurgerWrapper = styled.div<{ burgervisible: boolean }>`
+  display: none;
   position: absolute;
   left: -100%;
   width: 100%;
@@ -103,6 +105,7 @@ const BurgerWrapper = styled.div<{ burgervisible: boolean }>`
   ${({ burgervisible }) =>
     burgervisible &&
     css`
+      display: inline;
       animation: ${slideInAnimation} 1s forwards;
     `}
 `;
@@ -124,9 +127,9 @@ const GlobalStyle = createGlobalStyle<{ modalV: boolean }>`
   }
 `;
 const ModalOverlay = styled.div`
-  position: fixed;
+  position: absolute;
   top: 88px;
-  left: 0;
+  /* left: 100px; */
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -151,6 +154,7 @@ const NavLink = styled(Link)`
 `;
 const Div = styled.div`
   background-color: #101010;
+  width: 100%;
 `;
 const Navbar = styled.nav`
   display: flex;

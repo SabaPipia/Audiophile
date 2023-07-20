@@ -29,6 +29,10 @@ export const InputWrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+  @media (max-width: 730px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 export const InputContainer = styled.div`
   display: flex;

@@ -51,7 +51,16 @@ const FeaturesContent = styled.div`
   }
 `;
 
-const FeaturesContainer = styled.div``;
+const FeaturesContainer = styled.div`
+  @media (max-width: 550px) {
+    h1 {
+      font-size: 24px;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+`;
 
 const FeaturesHeader = styled.h1`
   text-transform: uppercase;
@@ -62,6 +71,9 @@ const Includes = styled.div`
   @media (max-width: 768px) {
     display: flex;
   }
+  @media (max-width: 375px) {
+    flex-direction: column;
+  }
 `;
 
 const BoxLine = styled.div`
@@ -69,18 +81,26 @@ const BoxLine = styled.div`
   gap: 20px;
   @media (max-width: 768px) {
     margin-left: auto;
-    margin-right: auto;
+  }
+  @media (max-width: 375px) {
+    margin-left: 0;
   }
 `;
 
 const BoxQuantity = styled.h3`
   color: #d87d4a;
   font-weight: 100;
+  @media (max-width: 550px) {
+    font-size: 16px;
+  }
 `;
 
 export const ProductItems = styled.h3`
   color: #838383;
   font-weight: 100;
+  @media (max-width: 550px) {
+    font-size: 16px;
+  }
 `;
 
 export default Features;

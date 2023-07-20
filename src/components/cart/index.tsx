@@ -94,31 +94,33 @@ const Cart: React.FC<CartProps> = ({ toggleModal }) => {
                       <ItemPrice>$ {product.price}</ItemPrice>
                     </CardNameWrapper>
                   </CardLeft>
-                  <ModalQuantity>
-                    <QuantityButtons
-                      onClick={() => {
-                        {
-                          product.quantity && product.name
-                            ? decrementByOne(product.quantity, product.name)
-                            : null;
-                        }
-                      }}
-                    >
-                      -
-                    </QuantityButtons>
-                    <ModalInput disabled value={product.quantity} />
-                    <QuantityButtons
-                      onClick={() => {
-                        {
-                          product.quantity && product.name
-                            ? incrementByOne(product.quantity, product.name)
-                            : null;
-                        }
-                      }}
-                    >
-                      +
-                    </QuantityButtons>
-                  </ModalQuantity>
+                  <div>
+                    <ModalQuantity>
+                      <QuantityButtons
+                        onClick={() => {
+                          {
+                            product.quantity && product.name
+                              ? decrementByOne(product.quantity, product.name)
+                              : null;
+                          }
+                        }}
+                      >
+                        -
+                      </QuantityButtons>
+                      <ModalInput disabled value={product.quantity} />
+                      <QuantityButtons
+                        onClick={() => {
+                          {
+                            product.quantity && product.name
+                              ? incrementByOne(product.quantity, product.name)
+                              : null;
+                          }
+                        }}
+                      >
+                        +
+                      </QuantityButtons>
+                    </ModalQuantity>
+                  </div>
                 </Card>
               );
             })}
@@ -173,11 +175,28 @@ export const ModalCard = styled.div`
   background-color: white;
   padding: 30px;
   width: 350px;
+  border-radius: 10px;
   @media (max-width: 1300px) {
     right: 130px;
   }
   @media (max-width: 1000px) {
     right: 40px;
+  }
+  @media (max-width: 500px) {
+    position: absolute;
+    right: 0px;
+    padding: 20px;
+    width: 100%;
+    margin: 20px;
+    width: 320px;
+    display: flex;
+    justify-content: center;
+    top: 0px;
+  }
+  @media (max-width: 375px) {
+    /* width: 100%; */
+    /* padding: 0; */
+    margin: 7px;
   }
 `;
 const ModalHeader = styled.div`
@@ -200,11 +219,18 @@ const Card = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  @media (max-width: 500px) {
+    display: grid;
+    grid-template-columns: 70fr 30fr;
+  }
 `;
 const CardLeft = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  @media (max-width: 500px) {
+    width: 200px;
+  }
 `;
 const CardImg = styled.img`
   width: 60px;
@@ -224,6 +250,11 @@ const ItemPrice = styled.h3`
 `;
 const ModalQuantity = styled(QuantityContainer)`
   height: 100%;
+  @media (max-width: 500px) {
+    div {
+      width: 10px;
+    }
+  }
 `;
 const ModalInput = styled(QuantityInput)`
   height: 100%;

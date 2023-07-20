@@ -18,5 +18,11 @@ const EMoneyWrapper = styled.div`
   @media (max-width: 1135px) {
     grid-template-columns: 1fr;
   }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
 `;
 export default EMoney;

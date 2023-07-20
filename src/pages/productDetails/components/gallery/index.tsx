@@ -28,16 +28,25 @@ const Gallery = styled.div`
   gap: 15px;
   justify-content: center;
   width: 100%;
+
+  @media (max-width: 465px) {
+    /* flex-direction: column; */
+    /* display: grid; */
+    /* grid-template-columns: 1fr; */
+    /* height: 100%; */
+  }
 `;
 export const GalleryLeft = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
   width: 40%;
-  /* flex: 1; */
+  @media (max-width: 465px) {
+    /* display: flex; */
+    /* flex-direction: column; */
+  }
 `;
 export const GalleryRight = styled.div<{ imgsrc: string }>`
-  flex: 1;
   background-image: ${(props) => {
     return `url(${props.imgsrc})`;
   }};
@@ -45,6 +54,9 @@ export const GalleryRight = styled.div<{ imgsrc: string }>`
   background-size: cover;
   object-fit: cover;
   background-repeat: no-repeat;
+  @media (max-width: 465px) {
+    /* background-size: 100%; */
+  }
 `;
 
 export const GalleryIMG = styled.img`
