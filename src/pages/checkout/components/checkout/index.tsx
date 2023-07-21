@@ -47,6 +47,9 @@ export const InputS = styled.input`
   padding: 20px 30px;
   border: 1px solid #cfcfcf;
   border-radius: 9px;
+  &:focus {
+    outline-color: #d87d4a;
+  }
 `;
 export const Header = styled.h3`
   color: #d87d4a;

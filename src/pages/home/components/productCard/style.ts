@@ -125,7 +125,7 @@ export const ProductWrapper = styled.div`
     display: flex;
     flex-direction: column;
     gap: 30px;
-
+    align-items: start;
     h1 {
       font-size: 50px;
     }
@@ -145,6 +145,11 @@ export const ProductWrapper = styled.div`
       h1 {
         font-size: 40px;
       }
+    }
+  }
+  @media (max-width: 1300px) {
+    div {
+      align-items: center;
     }
   }
 `;

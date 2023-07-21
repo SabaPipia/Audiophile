@@ -1,21 +1,76 @@
 import styled, { createGlobalStyle } from "styled-components";
 import Summary from "./components/summary";
 import Checkout from "./components/checkout";
+import { createContext, useState } from "react";
+import {
+  FieldErrors,
+  SubmitHandler,
+  UseFormHandleSubmit,
+  UseFormRegister,
+  useForm,
+} from "react-hook-form";
+
+export type Inputs = {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  zip: string;
+  city: string;
+  country: string;
+  eNumber: string;
+  ePin: string;
+};
+type InputsContextValue = {
+  register: UseFormRegister<Inputs>;
+  onSubmit: SubmitHandler<Inputs>;
+  handleSubmit: UseFormHandleSubmit<Inputs, undefined>;
+  modalIsOpen: boolean;
+  setModalIsOpen: (modal: boolean) => void;
+  errors: FieldErrors<Inputs>;
+};
+
+export const InputsContext = createContext<InputsContextValue>(
+  {} as InputsContextValue
+);
 
 function Main() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Inputs>();
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    setModalIsOpen(!modalIsOpen);
+    console.log(data);
+  };
   return (
     <>
       <GlobalStyle />
       <Container>
         <GridContainer>
-          <CheckoutWrapper>
-            <Checkout />
-          </CheckoutWrapper>
-          <div>
-            <SummaryWrapper>
-              <Summary />
-            </SummaryWrapper>
-          </div>
+          <InputsContext.Provider
+            value={{
+              register,
+              handleSubmit,
+              onSubmit,
+              setModalIsOpen,
+              modalIsOpen,
+              errors,
+            }}
+          >
+            <CheckoutWrapper>
+              <Checkout />
+            </CheckoutWrapper>
+            <div>
+              <SummaryWrapper>
+                <Summary />
+              </SummaryWrapper>
+            </div>
+          </InputsContext.Provider>
         </GridContainer>
       </Container>
     </>

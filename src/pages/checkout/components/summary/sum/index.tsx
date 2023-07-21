@@ -1,18 +1,19 @@
-import React from "react";
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../../../Root";
 import { styled } from "styled-components";
 import SumCard from "./sumCard";
-import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import { modalStyles } from "./Modal.styles";
 
 import ConfirmationModal from "./confirmationModal";
+import { InputsContext } from "../../..";
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
 Modal.setAppElement("#modal");
 function Total() {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { handleSubmit, onSubmit, modalIsOpen, setModalIsOpen } =
+    useContext(InputsContext);
 
   const [amount, setAmount] = useState("");
   const [shippingFee, setShippingFee] = useState(50);
@@ -20,13 +21,6 @@ function Total() {
   const [grandTotal, setGrandTotal] = useState("");
 
   const { cartItems } = useContext(CartContext);
-  // Modal
-  function toggleModal() {
-    setModalIsOpen(!modalIsOpen);
-  }
-
-  // Modal
-
   useEffect(() => {
     const modifiedSum = cartItems.reduce((total, item) => {
       if (item.price && item.quantity) {
@@ -50,22 +44,24 @@ function Total() {
       {modalIsOpen ? (
         <Modal
           isOpen={modalIsOpen}
-          onRequestClose={toggleModal}
+          // onRequestClose={toggleModal}
           style={modalStyles}
         >
           <ConfirmationModal grandTotal={grandTotal} />
         </Modal>
       ) : null}
-      <SumWrapper>
-        <SumCard name="total" value={amount} />
-        <SumCard name="shipping" value={shippingFee} />
-        <SumCard name="total" value={vat} />
-      </SumWrapper>
-      <GrandWrapper>
-        <GrandTotalText>Grand Total</GrandTotalText>
-        <GrandTotalAmount>${grandTotal}</GrandTotalAmount>
-      </GrandWrapper>
-      <PrimaryButton onClick={toggleModal}>Continue & pay</PrimaryButton>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <SumWrapper>
+          <SumCard name="total" value={amount} />
+          <SumCard name="shipping" value={shippingFee} />
+          <SumCard name="total" value={vat} />
+        </SumWrapper>
+        <GrandWrapper>
+          <GrandTotalText>Grand Total</GrandTotalText>
+          <GrandTotalAmount>${grandTotal}</GrandTotalAmount>
+        </GrandWrapper>
+        <PrimaryButton type="submit">Continue & pay</PrimaryButton>
+      </form>
     </TotalWrapper>
   );
 }

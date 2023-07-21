@@ -7,7 +7,6 @@ export const Hero = styled.div`
   min-height: calc(100vh - 88px);
   background: url(${HeroImage}) no-repeat;
   background-size: cover;
-  /* background-position: 0%; */
   display: grid;
   grid-template-columns: 1fr 1fr;
   @media (max-height: 700px) {
@@ -16,7 +15,6 @@ export const Hero = styled.div`
   @media (max-width: 840px) {
     display: flex;
     justify-content: center;
-    /* background-position: -250px; */
     background: url(${HeroImageTablet});
     background-position: center;
     background-size: cover;
@@ -108,7 +106,6 @@ export const Card = styled.div`
     transform: translateY(-10px);
   }
   @media (max-width: 700px) {
-    /* flex-direction: column; */
     padding: 20px 0px;
     width: 100%;
   }

@@ -5,8 +5,20 @@ function EMoney() {
   return (
     <>
       <EMoneyWrapper>
-        <Input value="e-Money Number" placeH="123456789" />
-        <Input value="e-Money Pin" placeH="1234" />
+        <Input
+          regex={/^[A-Za-z0-9]+$/}
+          req={true}
+          reg="eNumber"
+          value="e-Money Number"
+          placeH="123456789"
+        />
+        <Input
+          regex={/^\d{4}$/}
+          req={true}
+          reg="ePin"
+          value="e-Money Pin"
+          placeH="1234"
+        />
       </EMoneyWrapper>
     </>
   );
