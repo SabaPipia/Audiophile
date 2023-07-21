@@ -94,7 +94,6 @@ export const CartContainer = styled.div`
   @media (max-width: 500px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* gap: 100px; */
   }
 `;
 export const QuantityContainer = styled.div`

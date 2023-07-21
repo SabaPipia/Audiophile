@@ -41,7 +41,7 @@ const Cart: React.FC<CartProps> = ({ toggleModal }) => {
     setRerender(!rerender);
   };
   const decrementByOne = (quantity: number, itemName: string) => {
-    cartItems.map((item, index) => {
+    cartItems.map((item) => {
       if (item.name === itemName && quantity > 1 && item.quantity) {
         item.quantity--;
         setRerender(!rerender);

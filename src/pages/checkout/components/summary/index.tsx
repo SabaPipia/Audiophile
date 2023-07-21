@@ -4,13 +4,13 @@ import Total from "./sum";
 
 function Summary() {
   return (
-    <SummaryWrapper>
+    <>
       <SumHeader>Summary</SumHeader>
       <CardWrapper>
         <Card />
       </CardWrapper>
       <Total />
-    </SummaryWrapper>
+    </>
   );
 }
 const SumHeader = styled.h3`
@@ -24,6 +24,5 @@ const CardWrapper = styled.div`
   flex-direction: column;
   gap: 20px;
 `;
-const SummaryWrapper = styled.div``;
 
 export default Summary;
