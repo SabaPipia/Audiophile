@@ -20,7 +20,7 @@ const Suggestions: React.FC<SuggestionsProps> = ({ Data, setReload }) => {
     <>
       <Header>You may also like</Header>
       <CardContainer>
-        {Data?.others.map((item, index) => {
+        {Data?.others.map((_, index) => {
           const categoryName = Data?.others[index].slug
             .split("-")
             .slice(-1)
