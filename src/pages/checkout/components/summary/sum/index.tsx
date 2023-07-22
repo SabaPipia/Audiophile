@@ -12,8 +12,7 @@ import { InputsContext } from "../../..";
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
 Modal.setAppElement("#modal");
 function Total() {
-  const { handleSubmit, onSubmit, modalIsOpen, setModalIsOpen } =
-    useContext(InputsContext);
+  const { handleSubmit, onSubmit, modalIsOpen } = useContext(InputsContext);
 
   const [amount, setAmount] = useState("");
   const [shippingFee, setShippingFee] = useState(50);
@@ -36,6 +35,7 @@ function Total() {
 
     setAmount(modifiedSum.toLocaleString());
     setVat(vatValue.toLocaleString());
+    setShippingFee(50);
     setGrandTotal(grandTotalValue.toLocaleString());
   }, [cartItems, shippingFee]);
 
