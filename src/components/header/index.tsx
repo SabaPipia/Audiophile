@@ -26,24 +26,20 @@ function Header() {
         <GlobalStyle modalV={modalVisible} />
         <Container
           onClick={() => {
-            if (!modalVisible) {
-              return;
-            } else {
-              toggleModal();
-            }
+            !modalVisible ? null : toggleModal();
           }}
         >
           <Navbar>
             <Wrapper>
               <HamburderIcon src={hamburder} onClick={toggleBurger} />
-              <NavLink to={"/home"}>
+              <NavLink to={"/"}>
                 <img src={Logo} />
               </NavLink>
             </Wrapper>
             <LinkWrapper>
               <ItemContainer>
                 <Item>
-                  <NavLink to={"/home"}>Home</NavLink>
+                  <NavLink to={"/"}>Home</NavLink>
                 </Item>
                 <Item>
                   <NavLink to={"/headphones"}>Headphones</NavLink>

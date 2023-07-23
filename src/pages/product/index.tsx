@@ -13,19 +13,24 @@ import {
   ProductLink,
 } from "./style";
 import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function ProductPage() {
+  const [filteredData, setFilteredData] = useState<typeof data>([]);
+  const [category, setCategory] = useState("");
   const params = useLocation();
-  const categoryName = params.pathname.slice(1);
-  const filterData = data
-    .filter((item) => item.category === categoryName)
-    .map((item) => item);
-  const header = params.pathname.slice(1).toUpperCase();
+  useEffect(() => {
+    const categoryName = params.pathname.slice(1);
+    setCategory(categoryName);
+    setFilteredData(
+      data.filter((item) => item.category === categoryName).map((item) => item)
+    );
+  }, [params.pathname]);
   return (
     <>
-      <Header>{header}</Header>
+      <Header>{category}</Header>
       <ProductWrapper>
-        {filterData.map((item, index) => (
+        {filteredData.map((item, index) => (
           <ProductCard key={index} flexdir={index}>
             <ProductImage src={item.image.desktop} alt={item.name} />
             <ProductContent>

@@ -20,6 +20,7 @@ function Total() {
   const [grandTotal, setGrandTotal] = useState("");
 
   const { cartItems } = useContext(CartContext);
+
   useEffect(() => {
     const modifiedSum = cartItems.reduce((total, item) => {
       if (item.price && item.quantity) {
@@ -28,10 +29,8 @@ function Total() {
       return total;
     }, 0);
 
-    const vatRate = 0.2;
-    const sumToNumber = modifiedSum;
-    const vatValue = Math.floor(sumToNumber * vatRate);
-    const grandTotalValue = sumToNumber + vatValue + shippingFee;
+    const vatValue = Math.floor(modifiedSum * 0.2);
+    const grandTotalValue = modifiedSum + vatValue + shippingFee;
 
     setAmount(modifiedSum.toLocaleString());
     setVat(vatValue.toLocaleString());
@@ -44,7 +43,7 @@ function Total() {
       {modalIsOpen ? (
         <Modal
           isOpen={modalIsOpen}
-          // onRequestClose={toggleModal}
+          // onRequestClose={}
           style={modalStyles}
         >
           <ConfirmationModal grandTotal={grandTotal} />
@@ -54,7 +53,7 @@ function Total() {
         <SumWrapper>
           <SumCard name="total" value={amount} />
           <SumCard name="shipping" value={shippingFee} />
-          <SumCard name="total" value={vat} />
+          <SumCard name="vat(included)" value={vat} />
         </SumWrapper>
         <GrandWrapper>
           <GrandTotalText>Grand Total</GrandTotalText>

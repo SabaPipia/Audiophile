@@ -10,13 +10,13 @@ function Footer() {
   return (
     <FooterWrapper>
       <FooterHeader>
-        <FooterLink to={"/home"}>
+        <FooterLink to={"/"}>
           <img src={Logo} />
         </FooterLink>
         <Links>
           <ItemContainer>
             <Item>
-              <FooterLink to={"/home"}>Home</FooterLink>
+              <FooterLink to={"/"}>Home</FooterLink>
             </Item>
             <Item>
               <FooterLink to={"headphones"}>Headphones</FooterLink>

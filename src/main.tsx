@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import {
-  Navigate,
   Route,
   RouterProvider,
   createBrowserRouter,
@@ -19,9 +18,8 @@ const root = ReactDOM.createRoot(document.getElementById("root")!);
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<Navigate to="/home" />} />
       <Route path="/" element={<Root />}>
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/headphones" element={<ProductPage />} />
         <Route path="/headphones/:name" element={<ProductDetails />} />
         <Route path="/speakers" element={<ProductPage />} />

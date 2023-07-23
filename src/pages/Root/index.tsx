@@ -22,12 +22,9 @@ interface CartContextType {
 
 export const CartContext = createContext<CartContextType>({
   cartItems: [],
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  addToCart: () => {},
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  removeAll: () => {},
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setCartItems: () => {},
+  addToCart: () => [],
+  removeAll: () => [],
+  setCartItems: () => [],
 });
 
 function Root() {
@@ -60,7 +57,7 @@ function Root() {
         <Outlet />
         {checkout ? null : (
           <>
-            {location.pathname !== "/home" ? <CardComponent /> : null}
+            {location.pathname !== "/" ? <CardComponent /> : null}
             <ProductsInfo />
           </>
         )}

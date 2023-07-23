@@ -17,7 +17,7 @@ import {
   QuantityButtons,
   QuantityInput,
 } from "./style";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useMemo } from "react";
 import { PrimaryButton } from "../../components/Button";
 import { CartContext } from "../Root";
 import GalleryComp from "./components/gallery";
@@ -32,15 +32,11 @@ const ProductDetails = () => {
 
   const { cartItems, addToCart, setCartItems } = useContext(CartContext);
 
-  const getProductName = () => {
+  useEffect(() => {
     const locPath = loc.pathname.split("/");
     const getName = locPath[locPath.length - 1].split("%20").join(" ");
     const itemData = data.filter((item) => getName === item.slug);
     setProductData(itemData[0]);
-    setReload(false);
-  };
-  useEffect(() => {
-    getProductName();
   }, [reload]);
 
   const navigate = useNavigate();
@@ -49,20 +45,20 @@ const ProductDetails = () => {
   };
 
   const incrementByOne = () => {
-    const count = quantity + 1;
     if (quantity != 99) {
-      setQuantity(count);
+      setQuantity(quantity + 1);
     }
   };
 
   const decrementByOne = () => {
-    const count = quantity - 1;
     if (quantity != 1) {
-      setQuantity(count);
+      setQuantity(quantity - 1);
     }
   };
+
   const handleAddToCart = () => {
-    const itemName = productData?.name.split(" ")[0];
+    const itemName = productData?.name.split(" ").slice(0, -1).join(" ");
+    const existingItem = cartItems.find((item) => item.name === itemName);
     const productInfo = {
       name: itemName,
       price: productData?.price,
@@ -70,15 +66,15 @@ const ProductDetails = () => {
       id: new Date().toISOString(),
       picture: productData?.image.desktop,
     };
-    const existingItem = cartItems.find((item) => item.name === itemName);
     if (existingItem) {
-      const updatedCartItems = cartItems.map((item) => {
-        if (item.name === itemName && item.quantity) {
-          return { ...item, quantity: item.quantity + quantity };
-        }
-        return item;
-      });
-      setCartItems(updatedCartItems);
+      setCartItems(
+        cartItems.map((item) => {
+          if (item.name === itemName && item.quantity) {
+            return { ...item, quantity: item.quantity + quantity };
+          }
+          return item;
+        })
+      );
     } else {
       addToCart(productInfo);
     }
@@ -108,7 +104,11 @@ const ProductDetails = () => {
       </ProductContainer>
       <Features productData={productData} />
       <GalleryComp productData={productData} />
-      <Suggestions Data={productData} setReload={setReload} />
+      <Suggestions
+        productData={productData}
+        reload={reload}
+        setReload={setReload}
+      />
     </Container>
   );
 };

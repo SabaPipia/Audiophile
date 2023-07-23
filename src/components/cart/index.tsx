@@ -5,7 +5,7 @@ import {
   QuantityInput,
 } from "../../pages/productDetails/style";
 import { CartContext } from "../../pages/Root";
-import { useState, useContext } from "react";
+import { useState, useContext, useMemo } from "react";
 import RemoveConfirmation from "./removeConfirmation";
 import { Link } from "react-router-dom";
 
@@ -14,14 +14,13 @@ interface CartProps {
 }
 const Cart: React.FC<CartProps> = ({ toggleModal }) => {
   const { cartItems, removeAll, setCartItems } = useContext(CartContext);
-  const [rerender, setRerender] = useState(false);
   const [appearRemoveItem, setAppearRemoveItem] = useState(false);
   const [selectedItem, SetSelectedItem] = useState<{
     id: string | undefined;
     name: string;
   }>({ id: "", name: "" });
 
-  const calcTotalPrice = () => {
+  const calcTotalPrice = useMemo(() => {
     let price = 0;
     cartItems.map((item) => {
       if (item.price && item.quantity) {
@@ -29,44 +28,46 @@ const Cart: React.FC<CartProps> = ({ toggleModal }) => {
       }
     });
     return price;
-  };
+  }, [cartItems]);
 
-  const incrementByOne = (quantity: number, itemName: string) => {
-    const newCount = quantity + 1;
-    cartItems.map((item) => {
-      if (item.name === itemName && item.quantity) {
-        item.quantity = newCount;
-      }
-    });
-    setRerender(!rerender);
+  const incrementByOne = (itemName: string) => {
+    setCartItems(
+      cartItems.map((item) => {
+        if (item.name === itemName && item.quantity) {
+          return { ...item, quantity: item.quantity + 1 };
+        }
+        return item;
+      })
+    );
   };
   const decrementByOne = (quantity: number, itemName: string) => {
-    cartItems.map((item) => {
-      if (item.name === itemName && quantity > 1 && item.quantity) {
-        item.quantity--;
-        setRerender(!rerender);
-      } else if (item.name === itemName && item.quantity === 1) {
-        setAppearRemoveItem(true);
-        SetSelectedItem({ id: item.id, name: item.name });
-      }
-    });
+    setCartItems(
+      cartItems.map((item) => {
+        if (item.name === itemName && quantity > 1 && item.quantity) {
+          return { ...item, quantity: item.quantity - 1 };
+        } else if (item.name === itemName && item.quantity === 1) {
+          setAppearRemoveItem(true);
+          SetSelectedItem({ id: item.id, name: item.name });
+        }
+        return item;
+      })
+    );
   };
   const handleRemove = () => {
-    const updatedCartItems = cartItems.filter(
-      (prod) => prod.id !== selectedItem.id
-    );
-    setCartItems(updatedCartItems);
+    setCartItems(cartItems.filter((prod) => prod.id !== selectedItem.id));
     setAppearRemoveItem(false);
   };
+
   const handleCancel = () => {
     setAppearRemoveItem(false);
   };
+
   const generateCheckoutUrl = () => {
     let chars = "";
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     chars += letters;
     let randomUrl = "";
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 30; i++) {
       const letter = Math.floor(Math.random() * chars.length);
       randomUrl += chars.charAt(letter);
     }
@@ -112,7 +113,7 @@ const Cart: React.FC<CartProps> = ({ toggleModal }) => {
                         onClick={() => {
                           {
                             product.quantity && product.name
-                              ? incrementByOne(product.quantity, product.name)
+                              ? incrementByOne(product.name)
                               : null;
                           }
                         }}
@@ -133,7 +134,7 @@ const Cart: React.FC<CartProps> = ({ toggleModal }) => {
             ) : null}
             <TotalPriceWrapper>
               <TotalH>total</TotalH>
-              <TotalPrice>$ {calcTotalPrice()}</TotalPrice>
+              <TotalPrice>$ {calcTotalPrice}</TotalPrice>
             </TotalPriceWrapper>
             <CheckoutLink
               to={`/checkout/${generateCheckoutUrl()}`}
@@ -194,8 +195,6 @@ export const ModalCard = styled.div`
     top: 0px;
   }
   @media (max-width: 375px) {
-    /* width: 100%; */
-    /* padding: 0; */
     margin: 7px;
   }
 `;
