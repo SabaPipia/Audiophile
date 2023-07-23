@@ -71,7 +71,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
           return null;
         }
       })}
-      <BackToHomeBTN to={"/home"}>
+      <BackToHomeBTN to={"/"}>
         <PrimaryButton onClick={() => setCartItems([])}>
           Back To Home
         </PrimaryButton>

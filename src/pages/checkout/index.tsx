@@ -21,6 +21,7 @@ export type Inputs = {
   eNumber: string;
   ePin: string;
 };
+
 type InputsContextValue = {
   register: UseFormRegister<Inputs>;
   onSubmit: SubmitHandler<Inputs>;
@@ -42,9 +43,8 @@ function Main() {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<Inputs> = () => {
     setModalIsOpen(!modalIsOpen);
-    console.log(data);
   };
   return (
     <>

@@ -7,11 +7,9 @@ export const Hero = styled.div`
   min-height: calc(100vh - 88px);
   background: url(${HeroImage}) no-repeat;
   background-size: cover;
+  background-position: center;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  @media (max-height: 700px) {
-    background-position: center;
-  }
   @media (max-width: 840px) {
     display: flex;
     justify-content: center;

@@ -11,33 +11,37 @@ import {
 } from "../../style";
 
 interface SuggestionsProps {
-  Data?: dataTypes;
-  setReload: (reload: boolean) => void;
+  productData?: dataTypes;
+  reload: boolean;
+  setReload: (rel: boolean) => void;
 }
 
-const Suggestions: React.FC<SuggestionsProps> = ({ Data, setReload }) => {
+const Suggestions: React.FC<SuggestionsProps> = ({
+  productData,
+  reload,
+  setReload,
+}) => {
   return (
     <>
       <Header>You may also like</Header>
       <CardContainer>
-        {Data?.others.map((_, index) => {
-          const categoryName = Data?.others[index].slug
+        {productData?.others.map((_, index) => {
+          const categoryName = productData?.others[index].slug
             .split("-")
             .slice(-1)
             .toString();
-
           return (
             <Card key={index}>
-              <CardImg src={Data?.others[index].image.desktop} />
-              <CardHeader>{Data?.others[index].name}</CardHeader>
+              <CardImg src={productData?.others[index].image.desktop} />
+              <CardHeader>{productData?.others[index].name}</CardHeader>
               <LinkLike
                 to={`/${
                   categoryName === "speaker" ? `${categoryName}s` : categoryName
-                }/${Data?.others[index].slug}`}
+                }/${productData?.others[index].slug}`}
               >
                 <PrimaryButton
                   onClick={() => {
-                    setReload(true);
+                    setReload(!reload);
                   }}
                 >
                   See Product
