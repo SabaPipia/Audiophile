@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import Logo from "../../assets/shared/desktop/logo.svg";
+import Logo from "../../../assets/shared/desktop/logo.svg";
 import { Link } from "react-router-dom";
 import { ItemContainer, Item } from "../header";
-import Twiter from "../../assets/shared/desktop/icon-twitter.svg";
-import Fb from "../../assets/shared/desktop/icon-facebook.svg";
-import Insta from "../../assets/shared/desktop/icon-instagram.svg";
+import Twiter from "../../../assets/shared/desktop/icon-twitter.svg";
+import Fb from "../../../assets/shared/desktop/icon-facebook.svg";
+import Insta from "../../../assets/shared/desktop/icon-instagram.svg";
 
 function Footer() {
   return (

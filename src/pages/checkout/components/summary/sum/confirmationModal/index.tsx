@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Confirmation from "../../../../../../assets/checkout/icon-order-confirmation.svg";
+import Confirmation from "../../../../../../../assets/checkout/icon-order-confirmation.svg";
 import { CartContext } from "../../../../../Root";
 import {
   ConfirmationModalWrapper,

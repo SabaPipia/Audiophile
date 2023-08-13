@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import HeroImage from "../../assets/home/desktop/image-hero.jpg";
-import HeroImageTablet from "../../assets/home/tablet/image-header.jpg";
+import HeroImage from "../../../assets/home/desktop/image-hero.jpg";
+import HeroImageTablet from "../../../assets/home/tablet/image-header.jpg";
 import { Link } from "react-router-dom";
 // Hero
 export const Hero = styled.div`

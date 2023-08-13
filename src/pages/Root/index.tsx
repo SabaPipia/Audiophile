@@ -5,6 +5,8 @@ import Footer from "../../components/footer";
 import ProductsInfo from "../../components/info";
 import CardComponent from "../home/components/Card";
 import { createContext, useState, useEffect } from "react";
+import data from "../../../data.json";
+import Error from "../error";
 
 interface Item {
   name?: string;
@@ -18,19 +20,24 @@ interface CartContextType {
   addToCart: (product: Item) => void;
   removeAll: () => void;
   setCartItems: (items: Item[]) => void;
+  filteredData: typeof data;
+  setFilteredData: (itemData: typeof data) => void;
 }
 
 export const CartContext = createContext<CartContextType>({
   cartItems: [],
+  filteredData: [],
   addToCart: () => [],
   removeAll: () => [],
   setCartItems: () => [],
+  setFilteredData: () => [],
 });
 
 function Root() {
   const location = useLocation();
   const [cartItems, setCartItems] = useState<Item[]>([]);
   const [checkout, setCheckout] = useState(false);
+  const [filteredData, setFilteredData] = useState<typeof data>([]);
 
   const addToCart = (product: Item) => {
     setCartItems([...cartItems, product]);
@@ -47,23 +54,33 @@ function Root() {
   useEffect(() => {
     CheckPathName(location.pathname);
   }, [location]);
+  console.log(filteredData);
   return (
     <>
       <GlobalStyle />
-      <CartContext.Provider
-        value={{ cartItems, addToCart, removeAll, setCartItems }}
-      >
-        <Header />
-        <Outlet />
-        {checkout ? null : (
-          <>
-            {location.pathname !== "/" ? <CardComponent /> : null}
-            <ProductsInfo />
-          </>
-        )}
-      </CartContext.Provider>
-      <ScrollRestoration />
-      <Footer />
+      <>
+        <CartContext.Provider
+          value={{
+            cartItems,
+            filteredData,
+            addToCart,
+            removeAll,
+            setCartItems,
+            setFilteredData,
+          }}
+        >
+          <Header />
+          <Outlet />
+          {checkout ? null : (
+            <>
+              {location.pathname !== "/" ? <CardComponent /> : null}
+              <ProductsInfo />
+            </>
+          )}
+        </CartContext.Provider>
+        <ScrollRestoration />
+        <Footer />
+      </>
     </>
   );
 }

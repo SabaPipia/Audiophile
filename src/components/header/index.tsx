@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import styled, { createGlobalStyle, css, keyframes } from "styled-components";
-import CartIcon from "../../assets/shared/desktop/icon-cart.svg";
-import Logo from "../../assets/shared/desktop/logo.svg";
 import { useState } from "react";
+
+import CartIcon from "../../../assets/shared/desktop/icon-cart.svg";
+import Logo from "../../../assets/shared/desktop/logo.svg";
 import Cart from "../cart";
-import hamburder from "../../assets/shared/tablet/icon-hamburger.svg";
+import hamburder from "../../../assets/shared/tablet/icon-hamburger.svg";
 import BurgerMenu from "../burgerMenu";
 
 function Header() {

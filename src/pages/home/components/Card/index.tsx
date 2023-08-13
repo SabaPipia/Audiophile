@@ -8,7 +8,7 @@ import {
   CardWrapper,
 } from "../../style";
 
-import IconArrow from "../../../../assets/shared/desktop/icon-arrow-right.svg";
+import IconArrow from "../../../../../assets/shared/desktop/icon-arrow-right.svg";
 
 const CardComponent = () => {
   return (

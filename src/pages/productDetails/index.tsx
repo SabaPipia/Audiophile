@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 
-import data from "../../data.json";
+import data from "../../../data.json";
 import type dataTypes from "./types";
 import {
   BackButton,
@@ -17,12 +17,13 @@ import {
   QuantityButtons,
   QuantityInput,
 } from "./style";
-import { useEffect, useState, useContext, useMemo } from "react";
+import { useEffect, useState, useContext } from "react";
 import { PrimaryButton } from "../../components/Button";
 import { CartContext } from "../Root";
 import GalleryComp from "./components/gallery";
 import Features from "./components/features";
 import Suggestions from "./components/suggestions";
+import Error from "../error";
 
 const ProductDetails = () => {
   const [productData, setProductData] = useState<dataTypes>();
@@ -55,7 +56,6 @@ const ProductDetails = () => {
       setQuantity(quantity - 1);
     }
   };
-
   const handleAddToCart = () => {
     const itemName = productData?.name.split(" ").slice(0, -1).join(" ");
     const existingItem = cartItems.find((item) => item.name === itemName);
@@ -81,35 +81,43 @@ const ProductDetails = () => {
     setQuantity(1);
   };
   return (
-    <Container>
-      <BackButton onClick={back}>Go Back</BackButton>
-      <ProductContainer>
-        <ProductImage src={productData?.categoryImage.desktop} />
-        <ProductPriceContainer>
-          <ProductPriceNew>
-            {productData?.new ? "New Product" : null}
-          </ProductPriceNew>
-          <ProductName>{productData?.name}</ProductName>
-          <Content>{productData?.description}</Content>
-          <ProductPrice>$ {productData?.price}</ProductPrice>
-          <CartContainer>
-            <QuantityContainer>
-              <QuantityButtons onClick={decrementByOne}>-</QuantityButtons>
-              <QuantityInput disabled value={quantity} />
-              <QuantityButtons onClick={incrementByOne}>+</QuantityButtons>
-            </QuantityContainer>
-            <PrimaryButton onClick={handleAddToCart}>Add to cart</PrimaryButton>
-          </CartContainer>
-        </ProductPriceContainer>
-      </ProductContainer>
-      <Features productData={productData} />
-      <GalleryComp productData={productData} />
-      <Suggestions
-        productData={productData}
-        reload={reload}
-        setReload={setReload}
-      />
-    </Container>
+    <>
+      {productData ? (
+        <Container>
+          <BackButton onClick={back}>Go Back</BackButton>
+          <ProductContainer>
+            <ProductImage src={productData?.categoryImage.desktop} />
+            <ProductPriceContainer>
+              <ProductPriceNew>
+                {productData?.new ? "New Product" : null}
+              </ProductPriceNew>
+              <ProductName>{productData?.name}</ProductName>
+              <Content>{productData?.description}</Content>
+              <ProductPrice>$ {productData?.price}</ProductPrice>
+              <CartContainer>
+                <QuantityContainer>
+                  <QuantityButtons onClick={decrementByOne}>-</QuantityButtons>
+                  <QuantityInput disabled value={quantity} />
+                  <QuantityButtons onClick={incrementByOne}>+</QuantityButtons>
+                </QuantityContainer>
+                <PrimaryButton onClick={handleAddToCart}>
+                  Add to cart
+                </PrimaryButton>
+              </CartContainer>
+            </ProductPriceContainer>
+          </ProductContainer>
+          <Features productData={productData} />
+          <GalleryComp productData={productData} />
+          <Suggestions
+            productData={productData}
+            reload={reload}
+            setReload={setReload}
+          />
+        </Container>
+      ) : (
+        <Error />
+      )}
+    </>
   );
 };
 

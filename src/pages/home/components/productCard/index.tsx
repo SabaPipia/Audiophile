@@ -1,6 +1,6 @@
-import Zx9Speaker from "../../../../assets/home/desktop/image-speaker-zx9.png";
+import Zx9Speaker from "../../../../../assets/home/desktop/image-speaker-zx9.png";
 
-import Earphones from "../../../../assets/home/desktop/image-earphones-yx1.jpg";
+import Earphones from "../../../../../assets/home/desktop/image-earphones-yx1.jpg";
 import { ProductInfo, ProductName } from "../../style";
 
 import {

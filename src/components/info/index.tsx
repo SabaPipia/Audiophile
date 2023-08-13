@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Img from "../../assets/shared/desktop/image-best-gear.jpg";
-import ImgTablet from "../../assets/shared/tablet/image-best-gear.jpg";
+import Img from "../../../assets/shared/desktop/image-best-gear.jpg";
+import ImgTablet from "../../../assets/shared/tablet/image-best-gear.jpg";
 
 function ProductsInfo() {
   return (

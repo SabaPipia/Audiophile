@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Zx7Speaker from "../../../../assets/home/desktop/image-speaker-zx7.jpg";
-import Zx7SpeakerTablet from "../../../../assets/home/tablet/image-speaker-zx7.jpg";
+import Zx7Speaker from "../../../../../assets/home/desktop/image-speaker-zx7.jpg";
+import Zx7SpeakerTablet from "../../../../../assets/home/tablet/image-speaker-zx7.jpg";
 
 export const Container = styled.div`
   padding: 20px 200px;

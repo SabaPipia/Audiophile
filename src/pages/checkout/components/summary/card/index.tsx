@@ -11,7 +11,7 @@ function Card() {
           <CardWrapper>
             <CardRight>
               <CardImg
-                src={item?.picture ? `.${item.picture}` : undefined}
+                src={item?.picture ? `${item.picture}` : undefined}
                 alt={item.name}
               />
               <CardInfo>
