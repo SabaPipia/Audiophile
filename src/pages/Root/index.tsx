@@ -54,7 +54,7 @@ function Root() {
   useEffect(() => {
     CheckPathName(location.pathname);
   }, [location]);
-  console.log(filteredData);
+
   return (
     <>
       <GlobalStyle />

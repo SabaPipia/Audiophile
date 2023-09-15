@@ -71,28 +71,27 @@ export const BtnWrapper = styled.div`
 
 // Cards
 export const CardWrapper = styled.div`
-  padding: 20px 200px;
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding: 120px 200px 80px;
   display: flex;
   justify-content: space-between;
   @media (max-width: 1440px) {
-    padding: 20px 120px;
+    padding: 120px 120px;
   }
   @media (max-width: 1000px) {
-    padding: 30px 40px;
+    padding: 120px 40px;
   }
   @media (max-width: 700px) {
     flex-direction: column;
-    gap: 30px;
+    gap: 130px;
   }
 `;
 export const Card = styled.div`
+  position: relative;
   cursor: pointer;
   width: 22%;
   background-color: rgb(242, 242, 242);
   text-align: center;
-  padding: 20px 30px;
+  padding: 100px 30px 20px;
   border-radius: 20px;
   transition: ease-in-out 0.2s;
 
@@ -104,7 +103,7 @@ export const Card = styled.div`
     transform: translateY(-10px);
   }
   @media (max-width: 700px) {
-    padding: 20px 0px;
+    padding: 120px 0px 20px;
     width: 100%;
   }
 `;

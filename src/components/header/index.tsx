@@ -7,6 +7,7 @@ import Logo from "../../../assets/shared/desktop/logo.svg";
 import Cart from "../cart";
 import hamburder from "../../../assets/shared/tablet/icon-hamburger.svg";
 import BurgerMenu from "../burgerMenu";
+import { modalStyles } from "./modal.styles";
 
 function Header() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -59,17 +60,29 @@ function Header() {
           </Navbar>
         </Container>
         {modalVisible ? (
-          <ModalOverlay>
-            <Cart toggleModal={toggleModal} />
-          </ModalOverlay>
+          <>
+            <ModalOverlay style={modalStyles.overlay}>
+              <Cart toggleModal={toggleModal} />
+            </ModalOverlay>
+          </>
         ) : null}
       </Div>
-      <BurgerWrapper burgervisible={burgerVisible}>
-        <BurgerMenu burger={toggleBurger} />
-      </BurgerWrapper>
+      <>
+        {burgerVisible ? <Background></Background> : null}
+        <BurgerWrapper burgervisible={burgerVisible}>
+          <BurgerMenu burger={toggleBurger} />
+        </BurgerWrapper>
+      </>
     </>
   );
 }
+const Background = styled.div`
+  position: fixed;
+  width: 100%;
+  height: calc(100vh + 200px);
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 9999;
+`;
 const bounceAmount = "40px";
 const bounceAmount2 = "20px";
 const slideInAnimation = keyframes`
@@ -99,6 +112,7 @@ const BurgerWrapper = styled.div<{ burgervisible: boolean }>`
   width: 100%;
   background-color: #fff;
   transition: all 1s;
+  z-index: 9999;
   ${({ burgervisible }) =>
     burgervisible &&
     css`
@@ -150,7 +164,7 @@ const NavLink = styled(Link)`
   }
 `;
 const Div = styled.div`
-  background-color: #101010;
+  background-color: #020101;
   width: 100%;
 `;
 const Navbar = styled.nav`
