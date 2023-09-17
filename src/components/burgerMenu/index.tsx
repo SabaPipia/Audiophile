@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import CardComponent from "../../pages/home/components/Card";
 
 interface BurgerMenuProps {

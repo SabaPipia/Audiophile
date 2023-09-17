@@ -80,9 +80,9 @@ const Background = styled.div`
   position: fixed;
   width: 100%;
   height: calc(100vh + 200px);
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 9999;
-`;
+`; /* Semi-transparent black */
 const bounceAmount = "40px";
 const bounceAmount2 = "20px";
 const slideInAnimation = keyframes`

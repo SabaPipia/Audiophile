@@ -6,7 +6,6 @@ import ProductsInfo from "../../components/info";
 import CardComponent from "../home/components/Card";
 import { createContext, useState, useEffect } from "react";
 import data from "../../../data.json";
-import Error from "../error";
 
 interface Item {
   name?: string;
