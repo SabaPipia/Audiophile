@@ -1,4 +1,4 @@
 # Audiophile
 
-## Technologies Used
+### Technologies Used
 - React + TypeScript + Vite +  Styled Components
