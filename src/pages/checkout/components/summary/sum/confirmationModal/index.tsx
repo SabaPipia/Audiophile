@@ -42,7 +42,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
                 <VisibleItemContainer>
                   <div>
                     <ItemImage
-                      src={item?.picture ? `.${item.picture}` : undefined}
+                      src={item?.picture ? `${item.picture}` : undefined}
                     />
                   </div>
                   <ItemInfoContainer>
